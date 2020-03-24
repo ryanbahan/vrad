@@ -3,10 +3,12 @@ import './AreaCard.scss';
 
 function AreaCard({ id, key, name, shortname, about }) {
   return <article className="area-card">
-      <h1>{name}</h1>
-      <h4>({shortname})</h4>
+      <section>
+        <h1>{name}</h1>
+        <h4>({shortname})</h4>
+      </section>
       <p>{about}</p>
-      <button>View Listing</button>
+        <button>View Listing</button>
     </article>
 }
 

@@ -42,9 +42,11 @@ class AreasContainer extends React.Component {
   }
 
   render() {
-    return <main className="areas-container">
-    <h1>Choose your Destination</h1>
-      {this.areaCardDisplay()}
+    return <main>
+    <h1>Choose Your Destination</h1>
+      <section className="areas-container">
+        {this.areaCardDisplay()}
+      </section>
     </main>
     }
   }
