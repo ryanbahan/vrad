@@ -5,7 +5,7 @@ import './Nav.scss';
 function Nav({ user }) {
 
   return <nav>
-    <Link to="/">
+    <Link to="/areas">
       <h1>VRad!</h1>
     </Link>
       <p>Welcome, {user || "friend!"}</p>

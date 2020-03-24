@@ -28,14 +28,16 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-        <Nav user={this.state.userName}/>
           <Switch>
           <Route
             path='/'
             exact
             render={() => {return <Login handleSubmit={this.handleSubmit}/>}}
             />
-            <Route path="/areas" component={AreasContainer} />
+            <Route
+              path="/areas"
+              render={() => {return <AreasContainer user={this.state.userName}/>}}
+            />
           </Switch>
         </div>
       </Router>

@@ -1,5 +1,6 @@
 import React from 'react';
 import AreaCard from '../AreaCard/AreaCard';
+import Nav from '../Nav/Nav';
 import './AreasContainer.scss';
 
 class AreasContainer extends React.Component {
@@ -43,6 +44,7 @@ class AreasContainer extends React.Component {
 
   render() {
     return <main>
+    <Nav user={this.props.user} />
     <h1>Choose Your Destination</h1>
       <section className="areas-container">
         {this.areaCardDisplay()}
