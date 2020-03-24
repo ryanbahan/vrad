@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import AreasContainer from '../AreasContainer/AreasContainer';
 import './Login.scss';
 
@@ -30,14 +25,10 @@ class Login extends React.Component {
     this.setState({accountType: e.target.value});
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-  }
-
   render() {
     return (
       <main className="login-container">
-        <form className="login-form" onSubmit={this.handleSubmit}>
+        <form className="login-form">
         <label htmlFor="name">Name</label>
         <input type="text" id="name" onChange={this.updateName} required/>
         <label htmlFor="email">Email Address</label>
@@ -48,7 +39,9 @@ class Login extends React.Component {
           <option value="business">Business</option>
           <option value="other">Other</option>
         </select>
-        <button>Sign Up</button>
+        <Link to="/areas">
+          <button>Sign Up</button>
+        </Link>
         </form>
       </main>
     );
