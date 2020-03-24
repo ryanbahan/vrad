@@ -25,6 +25,10 @@ class Login extends React.Component {
     this.setState({accountType: e.target.value});
   }
 
+  handleSubmit = (e) => {
+    this.props.handleSubmit(this.state.name);
+  }
+
   render() {
     return (
       <main className="login-container">
@@ -40,7 +44,7 @@ class Login extends React.Component {
           <option value="other">Other</option>
         </select>
         <Link to="/areas">
-          <button>Sign Up</button>
+          <button type="submit" onClick={this.handleSubmit}>Sign Up</button>
         </Link>
         </form>
       </main>

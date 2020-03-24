@@ -16,16 +16,25 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-
+      userName: null
     }
+  }
+
+  handleSubmit = (name) => {
+    this.setState({userName: name})
   }
 
   render() {
     return (
       <Router>
         <div className="App">
+        <Nav items={["areas"]}/>
           <Switch>
-            <Route path="/" exact component={Login} />
+          <Route
+            path='/'
+            exact
+            render={() => {return <Login handleSubmit={this.handleSubmit}/>}}
+            />
             <Route path="/areas" component={AreasContainer} />
           </Switch>
         </div>
