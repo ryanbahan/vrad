@@ -28,7 +28,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-        <Nav items={["areas"]}/>
+        <Nav user={this.state.userName}/>
           <Switch>
           <Route
             path='/'
