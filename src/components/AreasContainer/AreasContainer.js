@@ -1,4 +1,5 @@
 import React from 'react';
+import AreaCard from '../AreaCard/AreaCard';
 import './AreasContainer.scss';
 
 class AreasContainer extends React.Component {
@@ -24,12 +25,27 @@ class AreasContainer extends React.Component {
     })
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.fetchAreaData();
   }
 
+  areaCardDisplay = () => {
+    return this.state.areas.map(area => {
+      return <AreaCard
+        id={area.id}
+        key={area.id}
+        name={area.name}
+        shortname={area.shortname}
+        about={area.about}
+      />
+    })
+  }
+
   render() {
-    return <main className="areas-container">hhh</main>
+    return <main className="areas-container">
+    <h1>Choose your Destination</h1>
+      {this.areaCardDisplay()}
+    </main>
     }
   }
 
