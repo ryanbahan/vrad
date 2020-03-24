@@ -9,30 +9,27 @@ class AreasContainer extends React.Component {
     }
   }
 
-
   fetchAreaData = () => {
-    // console.log("qwq")
     fetch('http://localhost:3001/api/v1/areas')
      .then(res => res.json())
      .then(data => {
       const promises = data.areas.map(area => {
         return fetch(`http://localhost:3001${area.details}`)
               .then(res => res.json())
-              this.setState({areas: Promise.all(promises)})
-              console.log(Promise.all(promises))
+              .then(info => {
+                return {shortname: area.area, ...info};
+              })
       })
+      Promise.all(promises).then(areas => this.setState({areas}));
     })
   }
 
   componentDidMount() {
-    this.fetchAreaData()
+    this.fetchAreaData();
   }
 
   render() {
-    return(
-      <main className="areas-container">hhh</main>
-
-      )
+    return <main className="areas-container">hhh</main>
     }
   }
 
