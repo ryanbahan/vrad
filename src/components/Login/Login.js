@@ -1,4 +1,11 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import AreasContainer from '../AreasContainer/AreasContainer';
 import './Login.scss';
 
 class Login extends React.Component {
