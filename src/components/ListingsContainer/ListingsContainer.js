@@ -4,15 +4,16 @@ import Nav from '../Nav/Nav';
 import './ListingsContainer.scss';
 
 class ListingsContainer extends React.Component {
-  constructor(props) {
+  constructor({ match, location }) {
     super();
     this.state = {
       listings: []
     }
+    this.areaID = match.params.id
   }
 
   fetchListingData = () => {
-    fetch('http://localhost:3001/api/v1/areas/' + 590)
+    fetch('http://localhost:3001/api/v1/areas/' + this.areaID)
      .then(res => res.json())
      .then(data => {
       const promises = data.listings.map(listing => {
