@@ -1,17 +1,20 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './ListingCard.scss';
 
-function ListingCard(props) {
+function ListingCard({name, id, areaID}) {
   return <article className="listing-card">
     <section>
-      <h1>{props.name}</h1>
+      <h1>{name}</h1>
       <section>
-        <button>View Listing</button>
+        <Link to={"/areas/" + areaID + "/listings/" + id}>
+          <button>View Listing</button>
+        </Link>
         <button>Add to Favorite</button>
       </section>
     </section>
     <section>
-      <img className="listing-img" src= {`/images/${props.id}_a.jpg`} />
+      <img className="listing-img" src= {`/images/${id}_a.jpg`} />
     </section>
   </article>
 }

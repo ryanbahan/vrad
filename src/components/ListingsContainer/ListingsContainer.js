@@ -34,8 +34,11 @@ class ListingsContainer extends React.Component {
   }
 
   listingCardDisplay = () => {
+    const areaID = this.props.match.params.id;
+
     return this.state.listings.map(listing => {
       return <ListingCard
+      areaID={areaID}
       id={listing.listingID}
       key={listing.listingID}
       name={listing.name}
