@@ -32,16 +32,25 @@ class ListingsContainer extends React.Component {
     this.fetchListingData();
   }
 
+  listingCardDisplay = () => {
+    return this.state.listings.map(listing => {
+      return <ListingCard
+      id={listing.listingID}
+      key={listing.listingID}
+      name={listing.name}
+      />
+    })
+  }
+
   render() {
     return <main>
     <Nav user={this.props.user} />
-    <h1>Choose Your Destination</h1>
+    <h1>Choose Your Listing</h1>
       <section className="listings-container">
-        'cards go here'
+        {this.listingCardDisplay()}
       </section>
     </main>
   }
-
 }
 
 export default ListingsContainer;
