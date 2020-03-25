@@ -16,8 +16,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-
+      userName: null
     }
+  }
+
+  handleSubmit = (name) => {
+    this.setState({userName: name})
   }
 
   render() {
@@ -25,8 +29,15 @@ class App extends React.Component {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/" exact component={Login} />
-            <Route path="/areas" component={AreasContainer} />
+          <Route
+            path='/'
+            exact
+            render={() => {return <Login handleSubmit={this.handleSubmit}/>}}
+            />
+            <Route
+              path="/areas"
+              render={() => {return <AreasContainer user={this.state.userName}/>}}
+            />
           </Switch>
         </div>
       </Router>

@@ -1,8 +1,18 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './Nav.scss';
 
-function Nav(props) {
-  return <nav></nav>
+function Nav({ user }) {
+
+  return <nav>
+    <Link to="/areas">
+      <h1>VRad!</h1>
+    </Link>
+      <p>Welcome, {user || "friend!"}</p>
+    <Link to="/">
+      <button>Sign Out</button>
+    </Link>
+  </nav>
 }
 
 export default Nav;

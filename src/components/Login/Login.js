@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import AreasContainer from '../AreasContainer/AreasContainer';
 import './Login.scss';
 
@@ -25,10 +25,16 @@ class Login extends React.Component {
     this.setState({accountType: e.target.value});
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.handleSubmit(this.state.name);
+    this.props.history.push('/areas');
+  }
+
   render() {
     return (
       <main className="login-container">
-        <form className="login-form">
+        <form className="login-form" onSubmit={this.handleSubmit}>
         <label htmlFor="name">Name</label>
         <input type="text" id="name" onChange={this.updateName} required/>
         <label htmlFor="email">Email Address</label>
@@ -39,13 +45,11 @@ class Login extends React.Component {
           <option value="business">Business</option>
           <option value="other">Other</option>
         </select>
-        <Link to="/areas">
-          <button>Sign Up</button>
-        </Link>
+          <button type="submit">Sign Up</button>
         </form>
       </main>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);
