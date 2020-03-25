@@ -6,13 +6,15 @@ import AreaCard from './AreaCard';
 
 describe("AreaCard", () => {
   it("should display the area information", () => {
-    const { getByText } = render(<Router><AreaCard
-        id={5}
-        key={5}
-        name={"River North"}
-        shortname={"RiNo"}
-        about={"RiNo is a burgeoning area with ..."}
-      /></Router>);
+    const { getByText } = render(<Router>
+        <AreaCard
+          id={5}
+          key={5}
+          name={"River North"}
+          shortname={"RiNo"}
+          about={"RiNo is a burgeoning area with ..."}
+        />
+      </Router>);
 
       const nameElement = getByText("River North");
       const shortNameElement = getByText(`(RiNo)`);
