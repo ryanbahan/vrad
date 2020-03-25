@@ -36,11 +36,11 @@ class Login extends React.Component {
       <main className="login-container">
         <form className="login-form" onSubmit={this.handleSubmit}>
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" onChange={this.updateName} required/>
+        <input type="text" id="name" placeholder="input-name" onChange={this.updateName} required/>
         <label htmlFor="email">Email Address</label>
-        <input type="email" id="email" onChange={this.updateEmail} required/>
+        <input type="email" id="email" placeholder="input-email" onChange={this.updateEmail} required/>
         <label htmlFor="account-type">Account Type</label>
-        <select name="account-type" id="account-type" onChange={this.updateAccountType} required>
+        <select name="account-type" id="account-type" placeholder="input-type" onChange={this.updateAccountType} required>
         <option value="vacation">Vacation</option>
           <option value="business">Business</option>
           <option value="other">Other</option>
