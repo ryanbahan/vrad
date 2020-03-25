@@ -1,0 +1,26 @@
+.listing-page {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5% 15%;
+}
+
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.secondary-images {
+  display: flex;
+  justify-content: space-between;
+  margin: 2.5% 0;
+}
+
+.secondary-images img {
+  width: 45%;
+}
+
+.favorite-button {
+  width: 25%;
+  align-self: center;
+}
