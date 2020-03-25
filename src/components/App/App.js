@@ -29,19 +29,19 @@ class App extends React.Component {
         <div className="App">
           <Switch>
             <Route
-              path='/'
               exact
-              render={() => {return <Login handleSubmit={this.handleSubmit}/>}}
+              path='/'
+              render={() => <Login handleSubmit={this.handleSubmit}/>}
               />
             <Route
               exact
               path="/areas"
-              render={() => {return <AreasContainer user={this.state.userName}/>}}
+              render={() => <AreasContainer user={this.state.userName}/>}
             />
             <Route
               exact
               path="/areas/:id"
-              component={ListingsContainer}
+              render={() => <ListingsContainer />}
             />
           </Switch>
         </div>
