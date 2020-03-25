@@ -3,7 +3,7 @@ import './ListingPage.scss';
 
 class ListingPage extends React.Component {
   constructor({ match, location }) {
-    super({ match, location });
+    super();
     this.state = {
       id: match.params.id
     }

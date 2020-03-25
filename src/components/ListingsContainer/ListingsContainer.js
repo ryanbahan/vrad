@@ -5,7 +5,7 @@ import './ListingsContainer.scss';
 
 class ListingsContainer extends React.Component {
   constructor({ match, location }) {
-    super({ match, location });
+    super();
     this.state = {
       listings: []
     }
