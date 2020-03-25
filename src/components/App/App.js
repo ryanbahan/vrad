@@ -3,7 +3,6 @@ import Login from '../Login/Login';
 import AreasContainer from '../AreasContainer/AreasContainer';
 import ListingsContainer from '../ListingsContainer/ListingsContainer';
 import ListingPage from '../ListingPage/ListingPage';
-import Nav from '../Nav/Nav';
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,14 +28,20 @@ class App extends React.Component {
       <Router>
         <div className="App">
           <Switch>
-          <Route
-            path='/'
-            exact
-            render={() => {return <Login handleSubmit={this.handleSubmit}/>}}
+            <Route
+              exact
+              path='/'
+              render={() => <Login handleSubmit={this.handleSubmit}/>}
+              />
+            <Route
+              exact
+              path="/areas"
+              render={() => <AreasContainer user={this.state.userName}/>}
             />
             <Route
-              path="/areas"
-              render={() => {return <AreasContainer user={this.state.userName}/>}}
+              exact
+              path="/areas/:id"
+              render={() => <ListingsContainer />}
             />
           </Switch>
         </div>
