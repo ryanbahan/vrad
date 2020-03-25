@@ -41,7 +41,7 @@ class App extends React.Component {
             <Route
               exact
               path="/areas/:id"
-              render={() => <ListingsContainer />}
+              render={(props) => <ListingsContainer user={this.state.userName} {...props}/>}
             />
           </Switch>
         </div>
