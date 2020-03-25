@@ -43,6 +43,11 @@ class App extends React.Component {
               path="/areas/:id"
               render={(props) => <ListingsContainer user={this.state.userName} {...props}/>}
             />
+            <Route
+              exact
+              path="/areas/:id/listings/:id"
+              render={(props) => <ListingPage {...props}/>}
+            />
           </Switch>
         </div>
       </Router>
