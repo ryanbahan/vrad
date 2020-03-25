@@ -5,6 +5,7 @@ class ListingPage extends React.Component {
   constructor({ match, location }) {
     super();
     this.state = {
+      listing: null,
       id: match.params.id
     }
   }
@@ -12,7 +13,7 @@ class ListingPage extends React.Component {
   fetchListingPageData = () => {
     fetch("http://localhost:3001/api/v1/listings/" + this.state.id)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(listingData => this.setState({listing: listingData}))
   }
 
   componentDidMount() {
@@ -20,7 +21,6 @@ class ListingPage extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return <main className="listing-page">test</main>
   }
 }
