@@ -7,18 +7,6 @@
 
 ### What's this PR do?
 
-### Where should the reviewer start?
-
-### How should this be manually tested?
-
-### Any background context you want to provide?
-
-### What are the relevant tickets?
-
-### Screenshots (if appropriate)
-
-### Questions
-
 ### Files Modified
 #### src directory
 - [ ] App.js
@@ -27,6 +15,8 @@
 - [ ] AreaCard.scss
 - [ ] AreasContainer.js
 - [ ] AreasContainer.scss
+- [ ] FavoriteContainer.js
+- [ ] FavoriteContainer.scss
 - [ ] ListingCard.js
 - [ ] ListingCard.scss
 - [ ] ListingsContainer.js
@@ -42,6 +32,7 @@
 - [ ] App.test.js
 - [ ] AreaCard.test.js
 - [ ] AreasContainer.test.js
+- [ ] FavoriteContainer.test.js
 - [ ] ListingCard.test.js
 - [ ] ListingsContainer.test.js
 - [ ] ListingCard.test.js
