@@ -13,16 +13,8 @@ class Login extends React.Component {
     }
   }
 
-  updateName = (e) => {
-    this.setState({name: e.target.value});
-  }
-
-  updateEmail = (e) => {
-    this.setState({email: e.target.value});
-  }
-
-  updateAccountType = (e) => {
-    this.setState({accountType: e.target.value});
+  updateLoginInfo = (e) => {
+    this.setState({[e.target.id]: e.target.value});
   }
 
   handleSubmit = (e) => {
@@ -35,17 +27,17 @@ class Login extends React.Component {
     return (
       <main className="login-container">
         <form className="login-form" onSubmit={this.handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input type="text" id="name" placeholder="input-name" onChange={this.updateName} required/>
-        <label htmlFor="email">Email Address</label>
-        <input type="email" id="email" placeholder="input-email" onChange={this.updateEmail} required/>
-        <label htmlFor="account-type">Account Type</label>
-        <select name="account-type" id="account-type" placeholder="input-type" onChange={this.updateAccountType} required>
-        <option value="vacation">Vacation</option>
-          <option value="business">Business</option>
-          <option value="other">Other</option>
-        </select>
-          <button type="submit">Sign Up</button>
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name" placeholder="input-name" onChange={this.updateLoginInfo} required/>
+          <label htmlFor="email">Email Address</label>
+          <input type="email" id="email" placeholder="input-email" onChange={this.updateLoginInfo} required/>
+          <label htmlFor="account-type">Account Type</label>
+          <select name="account-type" id="accountType" placeholder="input-type" onChange={this.updateLoginInfo} required>
+          <option value="vacation">Vacation</option>
+            <option value="business">Business</option>
+            <option value="other">Other</option>
+          </select>
+            <button type="submit">Sign Up</button>
         </form>
       </main>
     );
