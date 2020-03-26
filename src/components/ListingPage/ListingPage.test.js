@@ -18,15 +18,19 @@ describe("ListingPage", () => {
       const features = getByText("Features");
       const favorite = getByText("Favorite");
       const title = await waitForElement(() => getByText('Hip RiNo Party Spot'));
+      const address = await waitForElement(() => getByText('2250 Lawrence St'));
+      const locationShortname = await waitForElement(() => getByText('rino'));
+      const locationDetails = await waitForElement(() => getByText('$420 per night / 3 beds / 2.5 baths'));
 
       debug();
-    //   const shortNameElement = getByText(`(RiNo)`);
-    //   const aboutElement = getByText("RiNo is a burgeoning area with ...");
-    //
+
       expect(features).toBeInTheDocument();
       expect(favorite).toBeInTheDocument();
       expect(title).toBeInTheDocument();
-      // expect(aboutElement).toBeInTheDocument();
+      expect(address).toBeInTheDocument();
+      expect(locationShortname).toBeInTheDocument();
+      expect(locationDetails).toBeInTheDocument();
+
   })
 
 })
