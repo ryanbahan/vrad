@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import AreaCard from './AreaCard';
 
