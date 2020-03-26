@@ -3,6 +3,7 @@ import Login from '../Login/Login';
 import AreasContainer from '../AreasContainer/AreasContainer';
 import ListingsContainer from '../ListingsContainer/ListingsContainer';
 import ListingPage from '../ListingPage/ListingPage';
+import FavoriteContainer from "../FavoriteContainer/FavoriteContainer"
 import {
   BrowserRouter as Router,
   Switch,
@@ -46,8 +47,13 @@ class App extends React.Component {
             <Route
               exact
               path="/areas/:id/listings/:id"
-              render={(props) => <ListingPage {...props}/>}
+              render={(props) => <ListingPage user={this.state.userName} {...props}/>}
             />
+            <Route
+              exact
+              path='/favorites'
+              render={() => <FavoriteContainer user={this.state.userName}/>}
+              />
           </Switch>
         </div>
       </Router>
