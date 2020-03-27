@@ -4,7 +4,7 @@ import './ListingPage.scss';
 
 
 class ListingPage extends React.Component {
-  constructor({ match, location }) {
+  constructor({ match }) {
     super();
     this.state = {
       listing: {
@@ -37,6 +37,7 @@ class ListingPage extends React.Component {
   }
 
   render() {
+    // console.log(this.state);
     const { name, area, address } = this.state.listing;
     const { baths, beds, cost_per_night, superhost } = this.state.listing.details;
 
