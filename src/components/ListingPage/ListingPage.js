@@ -15,7 +15,30 @@ class ListingPage extends React.Component {
           features: []
         }
       },
-      id: match.params.id
+      id: match.params.id,
+      isFavorite: null
+    }
+  }
+
+  componentDidMount() {
+    this.fetchListingPageData();
+    this.checkFavorites();
+  }
+
+  checkFavorites() {
+    const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
+    if (favorites.find(item => item === parseInt(this.state.id))) {
+      this.setState({isFavorite: true});
+    } else {
+      this.setState({isFavorite: false});
+    }
+  }
+
+  displayFavoriteIcon() {
+    if (this.state.isFavorite) {
+      return 'active';
+    } else {
+      return 'inactive';
     }
   }
 
@@ -23,10 +46,6 @@ class ListingPage extends React.Component {
     fetch("http://localhost:3001/api/v1/listings/" + this.state.id)
     .then(res => res.json())
     .then(listingData => this.setState({listing: listingData}))
-  }
-
-  componentDidMount() {
-    this.fetchListingPageData();
   }
 
   getFeatures = () => {
@@ -37,10 +56,9 @@ class ListingPage extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
     const { name, area, address } = this.state.listing;
     const { baths, beds, cost_per_night, superhost } = this.state.listing.details;
-
+    const isFavorite = 'active';
     return <main>
       <Nav user={this.props.user} />
       <h1>Listing Details</h1>
@@ -60,7 +78,9 @@ class ListingPage extends React.Component {
         <ul className="features-list">
           {this.getFeatures()}
         </ul>
-        <button type="button" className="favorite-button">Favorite</button>
+        <button className="favorite-button-toggle" id={this.state.id}>
+          <img className="favorite-icon" src= {`/images/star-${this.displayFavoriteIcon()}.svg`} />
+        </button>
       </section>
     </main>
   }
