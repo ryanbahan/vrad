@@ -55,10 +55,14 @@ class ListingPage extends React.Component {
     })
   }
 
+  toggleFavorite = () => {
+    this.setState({isFavorite: !this.state.isFavorite});
+  }
+
   render() {
     const { name, area, address } = this.state.listing;
     const { baths, beds, cost_per_night, superhost } = this.state.listing.details;
-    const isFavorite = 'active';
+
     return <main>
       <Nav user={this.props.user} />
       <h1>Listing Details</h1>
@@ -78,7 +82,7 @@ class ListingPage extends React.Component {
         <ul className="features-list">
           {this.getFeatures()}
         </ul>
-        <button className="favorite-button-toggle" id={this.state.id}>
+        <button className="favorite-button-toggle" id={this.state.id} onClick={() => this.toggleFavorite()}>
           <img className="favorite-icon" src= {`/images/star-${this.displayFavoriteIcon()}.svg`} />
         </button>
       </section>
