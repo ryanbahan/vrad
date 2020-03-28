@@ -25,6 +25,22 @@ class ListingPage extends React.Component {
     this.checkFavorites();
   }
 
+  componentDidUpdate() {
+    this.updateSavedFavorites();
+  }
+
+  updateSavedFavorites = async () => {
+    const favorites = await JSON.parse(window.localStorage.getItem("listingFavorites"));
+    let updatedFavorites;
+
+    if (this.state.isFavorite === true) {
+      updatedFavorites = [...favorites, parseInt(this.state.id)];
+    } else {
+      updatedFavorites = favorites.filter(item => parseInt(item) !== parseInt(this.state.id))
+    }
+    window.localStorage.setItem("listingFavorites", JSON.stringify(updatedFavorites))
+  }
+
   checkFavorites() {
     const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
     if (favorites.find(item => item === parseInt(this.state.id))) {
