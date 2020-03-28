@@ -30,8 +30,27 @@ class ListingsContainer extends React.Component {
     })
   }
 
+  fetchSavedFavorites = () => {
+     if (window.localStorage.getItem("listingFavorites")) {
+       const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
+       console.log('parsed', favorites);
+       this.setState({favorites: favorites});
+     };
+  }
+
+  updateSavedFavorites = () => {
+    const favorites = JSON.stringify(this.state.favorites);
+    console.log('json', favorites);
+    window.localStorage.setItem("listingFavorites", favorites);
+  }
+
   componentDidMount = () => {
     this.fetchListingData();
+    this.fetchSavedFavorites();
+  }
+
+  componentDidUpdate() {
+    this.updateSavedFavorites();
   }
 
   toggleFavorite = (id) => {
@@ -44,6 +63,7 @@ class ListingsContainer extends React.Component {
   }
 
   checkFavorite = (id) => {
+    // console.log(this.state.favorites);
     if (this.state.favorites.find(item => item === id)) {
       return "active";
     } else {
