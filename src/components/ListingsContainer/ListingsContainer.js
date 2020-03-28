@@ -13,6 +13,15 @@ class ListingsContainer extends React.Component {
     this.areaID = match.params.id
   }
 
+  componentDidMount() {
+    this.fetchListingData();
+    this.fetchSavedFavorites();
+  }
+
+  componentDidUpdate() {
+    this.updateSavedFavorites();
+  }
+
   fetchListingData = () => {
     fetch('http://localhost:3001/api/v1/areas/' + this.areaID)
      .then(res => res.json())
@@ -44,15 +53,6 @@ class ListingsContainer extends React.Component {
     window.localStorage.setItem("listingFavorites", favorites);
   }
 
-  componentDidMount = () => {
-    this.fetchListingData();
-    this.fetchSavedFavorites();
-  }
-
-  componentDidUpdate() {
-    this.updateSavedFavorites();
-  }
-
   toggleFavorite = (id) => {
     if (this.state.favorites.find(item => item === id)) {
       const updatedItems = this.state.favorites.filter(item => item !== id);
@@ -63,7 +63,6 @@ class ListingsContainer extends React.Component {
   }
 
   checkFavorite = (id) => {
-    // console.log(this.state.favorites);
     if (this.state.favorites.find(item => item === id)) {
       return "active";
     } else {
