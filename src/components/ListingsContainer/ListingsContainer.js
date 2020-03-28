@@ -7,7 +7,8 @@ class ListingsContainer extends React.Component {
   constructor({ match, location }) {
     super();
     this.state = {
-      listings: []
+      listings: [],
+      favorites: []
     }
     this.areaID = match.params.id
   }
