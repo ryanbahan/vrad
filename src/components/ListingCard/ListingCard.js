@@ -10,7 +10,9 @@ function ListingCard({name, id, areaID}) {
         <Link to={"/areas/" + areaID + "/listings/" + id}>
           <button>View Listing</button>
         </Link>
-        <button>Add to Favorite</button>
+        <button className="favorite-button">
+          <img className="favorite-icon" src= {`/images/star.svg`} />
+        </button>
       </section>
     </section>
     <section>

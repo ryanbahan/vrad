@@ -11,10 +11,17 @@
     justify-content: space-between;
     padding: 0em 0em 1em 1em;
   }
-  section {
-    img {
-      height: auto;
-      width: 20em;
-    }
-  }
+}
+.listing-img {
+  width: 20rem;
+}
+
+.favorite-button {
+  width: 2rem;
+  background-color: #fff;
+  border: none;
+}
+
+.favorite-icon {
+  width: 100%;
 }
