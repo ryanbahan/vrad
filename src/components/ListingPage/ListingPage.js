@@ -33,7 +33,7 @@ class ListingPage extends React.Component {
     const favorites = await JSON.parse(window.localStorage.getItem("listingFavorites"));
     let updatedFavorites;
 
-    if (this.state.isFavorite === true) {
+    if (this.state.isFavorite === true && !favorites.find(item => item === parseInt(this.state.id))) {
       updatedFavorites = [...favorites, parseInt(this.state.id)];
     } else {
       updatedFavorites = favorites.filter(item => parseInt(item) !== parseInt(this.state.id))
