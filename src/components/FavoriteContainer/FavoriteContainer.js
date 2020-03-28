@@ -1,18 +1,33 @@
 import React from 'react';
 import Nav from "../Nav/Nav";
 import './FavoriteContainer.scss';
+import ListingCard from '../ListingCard/ListingCard';
 
 class FavoriteContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      listings: []
+      listings: [],
+      favorites: []
     }
   }
 
   componentDidMount() {
+    this.fetchSavedFavorites();
     this.fetchListingData();
   }
+
+  componentDidUpdate() {
+    this.updateSavedFavorites();
+  }
+
+  fetchSavedFavorites = () => {
+     if (window.localStorage.getItem("listingFavorites")) {
+       const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
+       this.setState({favorites: favorites});
+     };
+  }
+
 
   fetchListingData = () => {
     const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
@@ -20,7 +35,7 @@ class FavoriteContainer extends React.Component {
       return fetch('http://localhost:3001/api/v1/listings/' + listingID)
       .then(res => res.json())
       .then(data => {
-        return {id: listingID,
+        return {listingID: listingID,
           areaID: data.area_id,
           name: data.name}
       })
@@ -28,13 +43,53 @@ class FavoriteContainer extends React.Component {
     Promise.all(promises).then(listings => this.setState({listings}));
   }
 
+  updateSavedFavorites = () => {
+    const favorites = JSON.stringify(this.state.favorites);
+    window.localStorage.setItem("listingFavorites", favorites);
+  }
+
+  toggleFavorite = (id) => {
+    if (this.state.favorites.find(item => item === id)) {
+      this.updateFavoriteCards(id);
+    } else {
+      this.setState({favorites: [...this.state.favorites, id]})
+    }
+  }
+
+  updateFavoriteCards = (updateID) => {
+    const updatedItems = this.state.favorites.filter(item => item !== updateID);
+    this.setState({favorites: updatedItems})
+    const updatedListings = this.state.listings.filter(listing => listing.listingID !== updateID);
+    this.setState({listings: updatedListings})
+  }
+
+  checkFavorite = (id) => {
+    if (this.state.favorites.find(item => item === id)) {
+      return "active";
+    } else {
+      return "inactive";
+    }
+  }
+
+  favoriteCardDisplay = () => {
+    return this.state.listings.map(listing => {
+      return <ListingCard
+      areaID={listing.areaID}
+      id={listing.listingID}
+      key={listing.listingID}
+      name={listing.name}
+      toggleFavorite={this.toggleFavorite}
+      isFavorite={this.checkFavorite(listing.listingID)}
+      />
+    })
+  }
 
   render() {
     return<main>
     <Nav user={this.props.user} />
     <h1>Favorite Listing</h1>
-      <section>
-        lll
+      <section className="favorites-container">
+        {this.favoriteCardDisplay()}
       </section>
     </main>
   }
