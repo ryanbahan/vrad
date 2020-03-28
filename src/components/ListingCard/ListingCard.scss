@@ -1,4 +1,5 @@
 .listing-card {
+  position: relative;
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
@@ -11,10 +12,18 @@
     justify-content: space-between;
     padding: 0em 0em 1em 1em;
   }
-  section {
-    img {
-      height: auto;
-      width: 20em;
-    }
-  }
+}
+.listing-img {
+  width: 20rem;
+}
+
+.favorite-button-toggle {
+  cursor: pointer;
+  width: 2.5rem;
+  background-color: transparent;
+  border: none;
+}
+
+.favorite-icon {
+  width: 100%;
 }

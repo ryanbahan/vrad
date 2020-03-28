@@ -2,15 +2,17 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './ListingCard.scss';
 
-function ListingCard({name, id, areaID}) {
+function ListingCard({name, id, areaID, toggleFavorite, isFavorite}) {
   return <article className="listing-card">
     <section>
       <h1>{name}</h1>
       <section>
+        <button className="favorite-button-toggle" id={id} onClick={() => toggleFavorite(id)}>
+          <img className="favorite-icon" src= {`/images/star-${isFavorite}.svg`} />
+        </button>
         <Link to={"/areas/" + areaID + "/listings/" + id}>
-          <button>View Listing</button>
+        <button>View Listing</button>
         </Link>
-        <button>Add to Favorite</button>
       </section>
     </section>
     <section>

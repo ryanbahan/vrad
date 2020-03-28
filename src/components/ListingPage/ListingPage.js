@@ -15,7 +15,46 @@ class ListingPage extends React.Component {
           features: []
         }
       },
-      id: match.params.id
+      id: match.params.id,
+      isFavorite: null
+    }
+  }
+
+  componentDidMount() {
+    this.fetchListingPageData();
+    this.checkFavorites();
+  }
+
+  componentDidUpdate() {
+    this.updateSavedFavorites();
+  }
+
+  updateSavedFavorites = async () => {
+    const favorites = await JSON.parse(window.localStorage.getItem("listingFavorites"));
+    let updatedFavorites;
+
+    if (this.state.isFavorite === true && !favorites.find(item => item === parseInt(this.state.id))) {
+      updatedFavorites = [...favorites, parseInt(this.state.id)];
+    } else {
+      updatedFavorites = favorites.filter(item => parseInt(item) !== parseInt(this.state.id))
+    }
+    window.localStorage.setItem("listingFavorites", JSON.stringify(updatedFavorites))
+  }
+
+  checkFavorites() {
+    const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
+    if (favorites.find(item => item === parseInt(this.state.id))) {
+      this.setState({isFavorite: true});
+    } else {
+      this.setState({isFavorite: false});
+    }
+  }
+
+  displayFavoriteIcon() {
+    if (this.state.isFavorite) {
+      return 'active';
+    } else {
+      return 'inactive';
     }
   }
 
@@ -25,10 +64,6 @@ class ListingPage extends React.Component {
     .then(listingData => this.setState({listing: listingData}))
   }
 
-  componentDidMount() {
-    this.fetchListingPageData();
-  }
-
   getFeatures = () => {
     const features = this.state.listing.details.features;
     return features.map(feature => {
@@ -36,8 +71,11 @@ class ListingPage extends React.Component {
     })
   }
 
+  toggleFavorite = () => {
+    this.setState({isFavorite: !this.state.isFavorite});
+  }
+
   render() {
-    // console.log(this.state);
     const { name, area, address } = this.state.listing;
     const { baths, beds, cost_per_night, superhost } = this.state.listing.details;
 
@@ -60,7 +98,9 @@ class ListingPage extends React.Component {
         <ul className="features-list">
           {this.getFeatures()}
         </ul>
-        <button type="button" className="favorite-button">Favorite</button>
+        <button className="favorite-button-toggle" id={this.state.id} onClick={() => this.toggleFavorite()}>
+          <img className="favorite-icon" src= {`/images/star-${this.displayFavoriteIcon()}.svg`} />
+        </button>
       </section>
     </main>
   }
