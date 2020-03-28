@@ -34,6 +34,23 @@ class ListingsContainer extends React.Component {
     this.fetchListingData();
   }
 
+  toggleFavorite = (id) => {
+    if (this.state.favorites.find(item => item === id)) {
+      const updatedItems = this.state.favorites.filter(item => item !== id);
+      this.setState({favorites: updatedItems})
+    } else {
+      this.setState({favorites: [...this.state.favorites, id]})
+    }
+  }
+
+  checkFavorite = (id) => {
+    if (this.state.favorites.find(item => item === id)) {
+      return "active";
+    } else {
+      return "inactive";
+    }
+  }
+
   listingCardDisplay = () => {
     const areaID = this.props.match.params.id;
 
@@ -43,6 +60,8 @@ class ListingsContainer extends React.Component {
       id={listing.listingID}
       key={listing.listingID}
       name={listing.name}
+      toggleFavorite={this.toggleFavorite}
+      isFavorite={this.checkFavorite(listing.listingID)}
       />
     })
   }
