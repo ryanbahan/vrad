@@ -21,9 +21,18 @@ describe("ListingsContainer", () => {
       </Router>)
   });
 
-  it("should display the user's name", () => {
-    const { debug } = utils;
-    debug();
+  it("should display the user's name with a greeting", () => {
+    const { debug, getByText } = utils;
+    const name = getByText('Welcome, Ryan B');
+
+    expect(name).toBeInTheDocument();
+  })
+
+  it("Should display the page label", () => {
+    const { debug, getByText } = utils;
+    const label = getByText("Choose Your Listing");
+
+    expect(label).toBeInTheDocument();
   })
 
 })
