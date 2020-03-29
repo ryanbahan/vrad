@@ -28,7 +28,6 @@ class FavoriteContainer extends React.Component {
      };
   }
 
-
   fetchListingData = () => {
     const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
     const promises = favorites.map(listingID => {
@@ -84,12 +83,20 @@ class FavoriteContainer extends React.Component {
     })
   }
 
+  checkForFavoriteListings = () => {
+    if(this.state.favorites.length === 0) {
+      return <section>There are no Favorite Listings</section>
+    } else {
+      return this.favoriteCardDisplay();
+    }
+  }
+
   render() {
     return<main>
     <Nav user={this.props.user} />
-    <h1>Favorite Listing</h1>
+    <h1>Favorite Listings</h1>
       <section className="favorites-container">
-        {this.favoriteCardDisplay()}
+        {this.checkForFavoriteListings()}
       </section>
     </main>
   }
