@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import ListingsContainer from './ListingsContainer';
 import Nav from '../Nav/Nav';
 
-describe("ListingsContainer", () => {
+describe("ListingsContainer - RiNo View", () => {
   let utils;
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe("ListingsContainer", () => {
         }
         />
       </Router>)
-  });
+  })
 
   it("should display the user's name with a greeting", () => {
     const { getByText } = utils;
@@ -51,5 +51,27 @@ describe("ListingsContainer", () => {
     expect(listingE).toBeInTheDocument();
     expect(listingF).toBeInTheDocument();
   })
+})
 
+describe("ListingsContainer - Park Hill View", () => {
+  let utils;
+
+  beforeEach(() => {
+    utils = render(
+      <Router>
+        <ListingsContainer
+        user={"Tim N"}
+        match={
+          {params: {id: 751}}
+        }
+        />
+      </Router>)
+  })
+
+  it("should display the user's name with a greeting", () => {
+    const { getByText } = utils;
+    const name = getByText('Welcome, Tim N');
+
+    expect(name).toBeInTheDocument();
+  })
 })
