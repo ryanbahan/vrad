@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement } from '@testing-library/react';
+import { render, waitForElement, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom/';
 import { BrowserRouter as Router, Link } from "react-router-dom";
@@ -19,6 +19,10 @@ describe("ListingsContainer - RiNo View", () => {
         }
         />
       </Router>)
+  })
+
+  afterEach(() => {
+    utils = null;
   })
 
   it("should display the user's name with a greeting", () => {
