@@ -55,7 +55,6 @@ export function fetchSavedFavorites() {
      if (window.localStorage.getItem("listingFavorites")) {
        return JSON.parse(window.localStorage.getItem("listingFavorites"));
      } else {
-       window.localStorage.setItem("listingFavorites", JSON.stringify([]))
        return [];
      }
   }
@@ -69,7 +68,7 @@ export function updateSavedFavorites(savedFavorites) {
 
 export function checkFavorites(id) {
     const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
-    if (favorites.find(item => item === parseInt(id))) {
+    if (favorites.find(item => parseInt(item) === parseInt(id))) {
       return true;
     } else {
       return false;
