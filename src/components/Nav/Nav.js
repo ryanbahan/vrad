@@ -10,7 +10,7 @@ function Nav({ user, accountType }) {
       <h1>VRad!</h1>
     </Link>
     <Link to="/favorites">
-      View Favorite Listings
+      View Favorite Listings: ??
     </Link>
     </section>
     <section>
