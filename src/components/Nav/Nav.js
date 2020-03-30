@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './Nav.scss';
 
-function Nav({ user }) {
+function Nav({ userInfo }) {
 
   return <nav>
     <section>
@@ -10,10 +10,13 @@ function Nav({ user }) {
       <h1>VRad!</h1>
     </Link>
     <Link to="/favorites">
-      View Favorite Listings
+      View Favorite Listings: ??
     </Link>
     </section>
-      <p>Welcome, {user || "friend!"}</p>
+    <section>
+      <p>Welcome, {userInfo.userName || "friend!"}</p>
+      <p>Your Account Type: {userInfo.accountType || "Other"}</p>
+    </section>
     <Link to="/">
       <button>Sign Out</button>
     </Link>

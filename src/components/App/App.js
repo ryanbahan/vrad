@@ -16,12 +16,13 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      userName: null
+      userName: null,
+      accountType: null
     }
   }
 
-  handleSubmit = (name) => {
-    this.setState({userName: name})
+  handleSubmit = (name, accountType) => {
+    this.setState({userName: name, accountType: accountType})
   }
 
   render() {
@@ -37,22 +38,22 @@ class App extends React.Component {
             <Route
               exact
               path="/areas"
-              render={() => <AreasContainer user={this.state.userName}/>}
+              render={() => <AreasContainer userInfo={this.state}/>}
             />
             <Route
               exact
               path="/areas/:id"
-              render={(props) => <ListingsContainer user={this.state.userName} {...props}/>}
+              render={(props) => <ListingsContainer userInfo={this.state} {...props}/>}
             />
             <Route
               exact
               path="/areas/:id/listings/:id"
-              render={(props) => <ListingPage user={this.state.userName} {...props}/>}
+              render={(props) => <ListingPage userInfo={this.state} {...props}/>}
             />
             <Route
               exact
               path='/favorites'
-              render={() => <FavoriteContainer user={this.state.userName}/>}
+              render={() => <FavoriteContainer userInfo={this.state}/>}
               />
           </Switch>
         </div>

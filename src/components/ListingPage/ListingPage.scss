@@ -20,7 +20,11 @@
   width: 45%;
 }
 
-.favorite-button {
-  width: 25%;
-  align-self: center;
+.favorite-button-toggle {
+  height: 3em;
+  width: 3em;
+  img {
+    height: 100%;
+    width: 100%;
+  }
 }
