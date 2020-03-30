@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, waitForElement, fireEvent, cleanup } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom/';
 import { BrowserRouter as Router, Link } from "react-router-dom";
@@ -8,7 +9,7 @@ import Nav from '../Nav/Nav';
 
 describe("ListingCard", () => {
   let utils;
-  const mockToggleFavorite = jest.fn().mockImplementation((e) => console.log(e));
+  const mockToggleFavorite = jest.fn();
 
   beforeEach(() => {
 
@@ -43,10 +44,18 @@ describe("ListingCard", () => {
     const { getByTestId, debug } = utils;
     const favoriteButton = getByTestId("listing-card-favorite-button");
 
-    expect(favoriteButton.className).toBe("favorite-button-inactive");
-
     fireEvent.click(favoriteButton);
 
     expect(mockToggleFavorite).toHaveBeenCalledTimes(1);
+  })
+
+  it("Should have a clickable link to the appropriate route", () => {
+    const { getByText, getByTestId, debug, container } = utils;
+    const link = getByTestId("link");
+    const viewListingButton = getByText("View Listing");
+
+    fireEvent.click(viewListingButton);
+
+    expect(link.href).toBe("http://localhost/areas/751/listings/3921");
   })
 })

@@ -10,7 +10,7 @@ function ListingCard({name, id, areaID, toggleFavorite, isFavorite}) {
         <button className={`favorite-button-${isFavorite}`} data-testid="listing-card-favorite-button" id={id} onClick={() => toggleFavorite(id)}>
           <img className="favorite-icon" src= {`/images/star-${isFavorite}.svg`} />
         </button>
-        <Link to={"/areas/" + areaID + "/listings/" + id}>
+        <Link to={"/areas/" + areaID + "/listings/" + id} data-testid={"link"}>
         <button>View Listing</button>
         </Link>
       </section>
