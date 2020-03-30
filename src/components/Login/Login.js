@@ -27,7 +27,7 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.handleSubmit(this.state.name, this.state.accountType);
+    this.props.handleSubmit(this.state);
     this.props.history.push('/areas');
   }
 

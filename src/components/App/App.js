@@ -16,14 +16,15 @@ class App extends React.Component {
     super();
     this.state = {
       userInfo: {
-        userName: null,
+        name: null,
+        email: null,
         accountType: null
       }
     }
   }
 
-  handleSubmit = (name, accountType) => {
-    this.setState({userName: name, accountType: accountType})
+  handleSubmit = (userInfo) => {
+    this.setState({userInfo})
   }
 
   render() {

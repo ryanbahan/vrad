@@ -22,8 +22,8 @@ class ListingPage extends React.Component {
   }
 
   componentDidMount() {
+    const isFavorite = checkFavorites(this.state.id);
     fetchListingPageData(this.state.id).then(listingData => this.setState({listing: listingData}));
-    const isFavorite = checkFavorites();
     this.setState({isFavorite: isFavorite});
   }
 

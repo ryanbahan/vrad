@@ -13,7 +13,10 @@ describe("ListingsContainer - RiNo View", () => {
     utils = render(
       <Router>
         <ListingsContainer
-        userName={"Ryan B"}
+        userInfo={{name: null,
+          email: null,
+          accountType: "vacation"
+        }}
         match={
           {params: {id: 590}}
         }
@@ -57,7 +60,10 @@ describe("ListingsContainer - Park Hill View", () => {
     utils = render(
       <Router>
         <ListingsContainer
-        userName={"Tim N"}
+        userInfo={{name: null,
+          email: null,
+          accountType: "vacation"
+        }}
         match={
           {params: {id: 751}}
         }
@@ -91,7 +97,10 @@ describe("ListingsContainer - LoHi View", () => {
     utils = render(
       <Router>
         <ListingsContainer
-        userName={"Khalid W"}
+        userInfo={{name: null,
+          email: null,
+          accountType: "vacation"
+        }}
         match={
           {params: {id: 408}}
         }
@@ -133,7 +142,10 @@ describe("ListingsContainer - Cap Hill View", () => {
     utils = render(
       <Router>
         <ListingsContainer
-        userName={"Robbie J"}
+        userInfo={{name: null,
+          email: null,
+          accountType: "vacation"
+        }}
         match={
           {params: {id: 240}}
         }
