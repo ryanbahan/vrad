@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import ListingPage from './ListingPage';
 
-describe("ListingPage", () => {
+describe.skip("ListingPage", () => {
   let utils;
 
   beforeEach(() => {

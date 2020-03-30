@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import ListingsContainer from './ListingsContainer';
 import Nav from '../Nav/Nav';
 
-describe("ListingsContainer - RiNo View", () => {
+describe.skip("ListingsContainer - RiNo View", () => {
   let utils;
 
   beforeEach(() => {
@@ -57,7 +57,7 @@ describe("ListingsContainer - RiNo View", () => {
   })
 })
 
-describe("ListingsContainer - Park Hill View", () => {
+describe.skip("ListingsContainer - Park Hill View", () => {
   let utils;
 
   beforeEach(() => {
@@ -98,7 +98,7 @@ describe("ListingsContainer - Park Hill View", () => {
   })
 })
 
-describe("ListingsContainer - LoHi View", () => {
+describe.skip("ListingsContainer - LoHi View", () => {
   let utils;
 
   beforeEach(() => {
@@ -147,7 +147,7 @@ describe("ListingsContainer - LoHi View", () => {
   })
 })
 
-describe("ListingsContainer - Cap Hill View", () => {
+describe.skip("ListingsContainer - Cap Hill View", () => {
   let utils;
 
   beforeEach(() => {
