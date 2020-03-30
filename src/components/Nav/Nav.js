@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './Nav.scss';
 
 function Nav(props) {
+  console.log(props);
 
   return <nav>
     <section>
@@ -14,8 +15,8 @@ function Nav(props) {
     </Link>
     </section>
     <section>
-      <p>Welcome, {props.userName || "friend!"}</p>
-      <p>Your Account Type: {props.accountType || "Other"}</p>
+      <p>Welcome, {props.userInfo.name || "friend!"}</p>
+      <p>Your Account Type: {props.userInfo.accountType || "Other"}</p>
     </section>
     <Link to="/">
       <button>Sign Out</button>

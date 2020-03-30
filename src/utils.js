@@ -55,6 +55,7 @@ export function fetchSavedFavorites() {
      if (window.localStorage.getItem("listingFavorites")) {
        return JSON.parse(window.localStorage.getItem("listingFavorites"));
      } else {
+       window.localStorage.setItem("listingFavorites", JSON.stringify([]))
        return [];
      }
   }
