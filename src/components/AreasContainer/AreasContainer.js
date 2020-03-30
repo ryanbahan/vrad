@@ -2,6 +2,7 @@ import React from 'react';
 import AreaCard from '../AreaCard/AreaCard';
 import Nav from '../Nav/Nav';
 import './AreasContainer.scss';
+import { fetchAreaData } from '../../utils';
 
 class AreasContainer extends React.Component {
   constructor() {
@@ -11,23 +12,8 @@ class AreasContainer extends React.Component {
     }
   }
 
-  fetchAreaData = () => {
-    fetch('http://localhost:3001/api/v1/areas')
-     .then(res => res.json())
-     .then(data => {
-      const promises = data.areas.map(area => {
-        return fetch(`http://localhost:3001${area.details}`)
-              .then(res => res.json())
-              .then(info => {
-                return {shortname: area.area, ...info};
-              })
-      })
-      Promise.all(promises).then(areas => this.setState({areas}));
-    })
-  }
-
   componentDidMount = () => {
-    this.fetchAreaData();
+    fetchAreaData().then(areas => this.setState({areas: areas}));
   }
 
   areaCardDisplay = () => {

@@ -7,8 +7,7 @@ import FavoriteContainer from "../FavoriteContainer/FavoriteContainer"
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import './App.scss';
 
@@ -16,8 +15,10 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      userName: null,
-      accountType: null
+      userInfo: {
+        userName: null,
+        accountType: null
+      }
     }
   }
 
@@ -38,22 +39,22 @@ class App extends React.Component {
             <Route
               exact
               path="/areas"
-              render={() => <AreasContainer userInfo={this.state}/>}
+              render={() => <AreasContainer userInfo={this.state.userInfo}/>}
             />
             <Route
               exact
               path="/areas/:id"
-              render={(props) => <ListingsContainer userInfo={this.state} {...props}/>}
+              render={(props) => <ListingsContainer userInfo={this.state.userInfo} {...props}/>}
             />
             <Route
               exact
               path="/areas/:id/listings/:id"
-              render={(props) => <ListingPage userInfo={this.state} {...props}/>}
+              render={(props) => <ListingPage userInfo={this.state.userInfo} {...props}/>}
             />
             <Route
               exact
               path='/favorites'
-              render={() => <FavoriteContainer userInfo={this.state}/>}
+              render={() => <FavoriteContainer userInfo={this.state.userInfo}/>}
               />
           </Switch>
         </div>

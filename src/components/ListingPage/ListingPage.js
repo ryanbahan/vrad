@@ -1,7 +1,8 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
 import './ListingPage.scss';
-
+import { fetchListingPageData, checkFavorites } from '../../utils';
+import PropTypes from 'prop-types';
 
 class ListingPage extends React.Component {
   constructor({ match }) {
@@ -21,8 +22,9 @@ class ListingPage extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchListingPageData();
-    this.checkFavorites();
+    fetchListingPageData(this.state.id).then(listingData => this.setState({listing: listingData}));
+    const isFavorite = checkFavorites();
+    this.setState({isFavorite: isFavorite});
   }
 
   componentDidUpdate() {
@@ -41,27 +43,12 @@ class ListingPage extends React.Component {
     window.localStorage.setItem("listingFavorites", JSON.stringify(updatedFavorites))
   }
 
-  checkFavorites() {
-    const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
-    if (favorites.find(item => item === parseInt(this.state.id))) {
-      this.setState({isFavorite: true});
-    } else {
-      this.setState({isFavorite: false});
-    }
-  }
-
   displayFavoriteIcon() {
     if (this.state.isFavorite) {
       return 'active';
     } else {
       return 'inactive';
     }
-  }
-
-  fetchListingPageData = () => {
-    fetch("http://localhost:3001/api/v1/listings/" + this.state.id)
-    .then(res => res.json())
-    .then(listingData => this.setState({listing: listingData}))
   }
 
   getFeatures = () => {
@@ -73,6 +60,14 @@ class ListingPage extends React.Component {
 
   toggleFavorite = () => {
     this.setState({isFavorite: !this.state.isFavorite});
+  }
+
+  checkSuperhost = (superhost) => {
+    if (superhost) {
+      return "Superhost"
+    } else {
+      return null;
+    }
   }
 
   render() {
@@ -87,23 +82,30 @@ class ListingPage extends React.Component {
           <h2 className="listing-title">{name}</h2>
           <p className="address">{address.street}</p>
         </div>
-        <img className="main-image" src={"/images/" + this.state.id + "_a.jpg"} />
+        <img className="main-image" src={"/images/" + this.state.id + "_a.jpg"} alt={`Primary view of ${name}`} />
         <div className="secondary-images">
-          <img className="secondary-image-a" src={"/images/" + this.state.id + "_b.jpg"} />
-          <img className="secondary-image-b" src={"/images/" + this.state.id + "_c.jpg"} />
+          <img className="secondary-image-a" src={"/images/" + this.state.id + "_b.jpg"} alt={`Secondary view of ${name}`} />
+          <img className="secondary-image-b" src={"/images/" + this.state.id + "_c.jpg"} alt={`Tertiary view of ${name}`} />
         </div>
         <p className="listing-area-shortname">{area}</p>
+        <p>{this.checkSuperhost(superhost)}</p>
         <p className="image-lower-bar">{"$" + cost_per_night + " per night / " + beds + " beds / " + baths + " baths"}</p>
         <h3 className="features-title">Features</h3>
         <ul className="features-list">
           {this.getFeatures()}
         </ul>
         <button className="favorite-button-toggle" id={this.state.id} onClick={() => this.toggleFavorite()}>
-          <img className="favorite-icon" src= {`/images/star-${this.displayFavoriteIcon()}.svg`} />
+          <img className="favorite-icon" src= {`/images/star-${this.displayFavoriteIcon()}.svg`} alt="Favorite Listing"/>
         </button>
       </section>
     </main>
   }
+}
+
+ListingPage.propTypes = {
+  listing: PropTypes.object,
+  id: PropTypes.string,
+  isFavorite: PropTypes.bool
 }
 
 export default ListingPage;

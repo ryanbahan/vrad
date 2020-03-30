@@ -2,6 +2,8 @@ import React from 'react';
 import Nav from "../Nav/Nav";
 import './FavoriteContainer.scss';
 import ListingCard from '../ListingCard/ListingCard';
+import { fetchFavoriteListingData, fetchSavedFavorites, updateSavedFavorites } from '../../utils';
+import PropTypes from 'prop-types';
 
 class FavoriteContainer extends React.Component {
   constructor() {
@@ -13,38 +15,13 @@ class FavoriteContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchSavedFavorites();
-    this.fetchListingData();
+    const favorites = fetchSavedFavorites();
+    this.setState({favorites: favorites});
+    fetchFavoriteListingData().then(listings => this.setState({listings}));
   }
 
   componentDidUpdate() {
-    this.updateSavedFavorites();
-  }
-
-  fetchSavedFavorites = () => {
-     if (window.localStorage.getItem("listingFavorites")) {
-       const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
-       this.setState({favorites: favorites});
-     };
-  }
-
-  fetchListingData = () => {
-    const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
-    const promises = favorites.map(listingID => {
-      return fetch('http://localhost:3001/api/v1/listings/' + listingID)
-      .then(res => res.json())
-      .then(data => {
-        return {listingID: listingID,
-          areaID: data.area_id,
-          name: data.name}
-      })
-    })
-    Promise.all(promises).then(listings => this.setState({listings}));
-  }
-
-  updateSavedFavorites = () => {
-    const favorites = JSON.stringify(this.state.favorites);
-    window.localStorage.setItem("listingFavorites", favorites);
+    updateSavedFavorites();
   }
 
   toggleFavorite = (id) => {
@@ -100,6 +77,11 @@ class FavoriteContainer extends React.Component {
       </section>
     </main>
   }
+}
+
+FavoriteContainer.propTypes = {
+  listings: PropTypes.array,
+  favorites: PropTypes.array
 }
 
 export default FavoriteContainer;

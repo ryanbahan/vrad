@@ -2,53 +2,27 @@ import React from 'react';
 import ListingCard from '../ListingCard/ListingCard';
 import Nav from '../Nav/Nav';
 import './ListingsContainer.scss';
+import { fetchListingData, fetchSavedFavorites, updateSavedFavorites } from '../../utils';
+import PropTypes from 'prop-types';
 
 class ListingsContainer extends React.Component {
   constructor({ match, location }) {
     super();
     this.state = {
       listings: [],
-      favorites: []
+      favorites: [],
+      areaID: match.params.id
     }
-    this.areaID = match.params.id
   }
 
   componentDidMount() {
-    this.fetchListingData();
-    this.fetchSavedFavorites();
+    fetchListingData(this.state.areaID).then(listings => this.setState({listings}));
+    const favorites = fetchSavedFavorites();
+    this.setState({favorites: favorites});
   }
 
   componentDidUpdate() {
-    this.updateSavedFavorites();
-  }
-
-  fetchListingData = () => {
-    fetch('http://localhost:3001/api/v1/areas/' + this.areaID)
-     .then(res => res.json())
-     .then(data => {
-      const promises = data.listings.map(listing => {
-        return fetch('http://localhost:3001'+ listing)
-              .then(res => res.json())
-              .then(info => {
-                return {name: info.name,
-                  listingID: info.listing_id
-                  };
-              })
-      })
-      Promise.all(promises).then(listings => this.setState({listings}));
-    })
-  }
-
-  fetchSavedFavorites = () => {
-     if (window.localStorage.getItem("listingFavorites")) {
-       const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
-       this.setState({favorites: favorites});
-     };
-  }
-
-  updateSavedFavorites = () => {
-    const favorites = JSON.stringify(this.state.favorites);
-    window.localStorage.setItem("listingFavorites", favorites);
+    updateSavedFavorites(this.state.favorites);
   }
 
   toggleFavorite = (id) => {
@@ -69,7 +43,7 @@ class ListingsContainer extends React.Component {
   }
 
   listingCardDisplay = () => {
-    const areaID = this.props.match.params.id;
+    const areaID = this.state.areaID;
 
     return this.state.listings.map(listing => {
       return <ListingCard
@@ -92,6 +66,12 @@ class ListingsContainer extends React.Component {
       </section>
     </main>
   }
+}
+
+ListingsContainer.propTypes = {
+  listings: PropTypes.array,
+  favorites: PropTypes.array,
+  areaID: PropTypes.string
 }
 
 export default ListingsContainer;

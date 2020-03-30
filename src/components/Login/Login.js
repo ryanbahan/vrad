@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link, withRouter } from "react-router-dom";
-import AreasContainer from '../AreasContainer/AreasContainer';
+import { withRouter } from "react-router-dom";
 import './Login.scss';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
   constructor() {
@@ -50,6 +50,12 @@ class Login extends React.Component {
       </main>
     );
   }
+}
+
+Login.propTypes = {
+  name: PropTypes.string,
+  email: PropTypes.string,
+  accountType: PropTypes.bool
 }
 
 export default withRouter(Login);
