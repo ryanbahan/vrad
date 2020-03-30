@@ -9,13 +9,12 @@ describe("AreasContainer - Navigation Display", () => {
   it("should display the Business welcome message", () => {
     const { getByText } = render(<Router>
         <AreasContainer
-          user={"Bob"}
-          userAccountType={"business"}
+          userInfo={{userName: "Bob", accountType: "business"}}
         />
       </Router>);
 
       const welcomeElement = getByText("Welcome, Bob");
-      const accountTypeMessage = getByText("This is Business View")
+      const accountTypeMessage = getByText("Your Account Type: business")
 
       expect(welcomeElement).toBeInTheDocument();
       expect(accountTypeMessage).toBeInTheDocument();
@@ -24,13 +23,12 @@ describe("AreasContainer - Navigation Display", () => {
   it("should display the Vacation welcome message", () => {
     const { getByText } = render(<Router>
         <AreasContainer
-          user={"Jane"}
-          userAccountType={"vacation"}
+          userInfo={{userName: "Jane", accountType: "vacation"}}
         />
       </Router>);
 
       const welcomeElement = getByText("Welcome, Jane");
-      const accountTypeMessage = getByText("This is Vacation View")
+      const accountTypeMessage = getByText("Your Account Type: vacation")
 
       expect(welcomeElement).toBeInTheDocument();
       expect(accountTypeMessage).toBeInTheDocument();
@@ -39,13 +37,12 @@ describe("AreasContainer - Navigation Display", () => {
   it("should display the Other welcome message", () => {
     const { getByText } = render(<Router>
         <AreasContainer
-          user={"Tom"}
-          userAccountType={"other"}
+        userInfo={{userName: "Tom", accountType: "other"}}
         />
       </Router>);
 
       const welcomeElement = getByText("Welcome, Tom");
-      const accountTypeMessage = getByText("This is Other View")
+      const accountTypeMessage = getByText("Your Account Type: other")
 
       expect(welcomeElement).toBeInTheDocument();
       expect(accountTypeMessage).toBeInTheDocument();
@@ -54,13 +51,12 @@ describe("AreasContainer - Navigation Display", () => {
   it("should display the Default welcome message", () => {
     const { getByText } = render(<Router>
         <AreasContainer
-          user={"Cindy"}
-          userAccountType={"undefined"}
+          userInfo={{userName: "Cindy", accountType: "undefined"}}
         />
       </Router>);
 
       const welcomeElement = getByText("Welcome, Cindy");
-      const accountTypeMessage = getByText("This is VRad!")
+      const accountTypeMessage = getByText("Your Account Type: Other")
 
       expect(welcomeElement).toBeInTheDocument();
       expect(accountTypeMessage).toBeInTheDocument();
@@ -74,8 +70,7 @@ describe("AreasContainer - Area Card Display", () => {
   beforeEach(() => {
     utils = render(<Router>
         <AreasContainer
-          user={"Bob"}
-          userAccountType={"business"}
+          userInfo={{userName: "Bob", accountType: "business"}}
         />
       </Router>);
   })
@@ -90,12 +85,5 @@ describe("AreasContainer - Area Card Display", () => {
 
     expect(label).toBeInTheDocument();
   })
-
-  // it("should display the Business welcome message", () => {
-  //   const { queryByText } = utils;
-  //   const areaA = await waitForElement(() => queryByText('River North'));
-  //
-  //   expect(areaA).toBeInTheDocument();
-  // })
 
 })
