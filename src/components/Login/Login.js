@@ -55,7 +55,7 @@ class Login extends React.Component {
 Login.propTypes = {
   name: PropTypes.string,
   email: PropTypes.string,
-  accountType: PropTypes.string
+  accountType: PropTypes.bool
 }
 
 export default withRouter(Login);

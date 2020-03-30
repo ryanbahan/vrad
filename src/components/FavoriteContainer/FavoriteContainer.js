@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from "../Nav/Nav";
 import './FavoriteContainer.scss';
 import ListingCard from '../ListingCard/ListingCard';
-import { fetchFavoriteListingData } from '../../utils';
+import { fetchFavoriteListingData, fetchSavedFavorites, updateSavedFavorites } from '../../utils';
 import PropTypes from 'prop-types';
 
 class FavoriteContainer extends React.Component {
@@ -15,24 +15,13 @@ class FavoriteContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchSavedFavorites();
+    const favorites = fetchSavedFavorites();
+    this.setState({favorites: favorites});
     fetchFavoriteListingData().then(listings => this.setState({listings}));
   }
 
   componentDidUpdate() {
-    this.updateSavedFavorites();
-  }
-
-  fetchSavedFavorites = () => {
-     if (window.localStorage.getItem("listingFavorites")) {
-       const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
-       this.setState({favorites: favorites});
-     };
-  }
-
-  updateSavedFavorites = () => {
-    const favorites = JSON.stringify(this.state.favorites);
-    window.localStorage.setItem("listingFavorites", favorites);
+    updateSavedFavorites();
   }
 
   toggleFavorite = (id) => {

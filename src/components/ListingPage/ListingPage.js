@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
 import './ListingPage.scss';
-import { fetchListingPageData } from '../../utils';
+import { fetchListingPageData, checkFavorites } from '../../utils';
 import PropTypes from 'prop-types';
 
 class ListingPage extends React.Component {
@@ -23,7 +23,8 @@ class ListingPage extends React.Component {
 
   componentDidMount() {
     fetchListingPageData(this.state.id).then(listingData => this.setState({listing: listingData}));
-    this.checkFavorites();
+    const isFavorite = checkFavorites();
+    this.setState({isFavorite: isFavorite});
   }
 
   componentDidUpdate() {
@@ -40,15 +41,6 @@ class ListingPage extends React.Component {
       updatedFavorites = favorites.filter(item => parseInt(item) !== parseInt(this.state.id))
     }
     window.localStorage.setItem("listingFavorites", JSON.stringify(updatedFavorites))
-  }
-
-  checkFavorites() {
-    const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
-    if (favorites.find(item => item === parseInt(this.state.id))) {
-      this.setState({isFavorite: true});
-    } else {
-      this.setState({isFavorite: false});
-    }
   }
 
   displayFavoriteIcon() {

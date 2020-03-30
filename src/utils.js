@@ -50,3 +50,25 @@ export function fetchFavoriteListingData() {
     })
     return Promise.all(promises);
   }
+
+export function fetchSavedFavorites() {
+     if (window.localStorage.getItem("listingFavorites")) {
+       return JSON.parse(window.localStorage.getItem("listingFavorites"));
+     } else {
+       return [];
+     }
+  }
+
+export function updateSavedFavorites(savedFavorites) {
+    const favorites = JSON.stringify(savedFavorites);
+    window.localStorage.setItem("listingFavorites", favorites);
+  }
+
+export function checkFavorites() {
+    const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
+    if (favorites.find(item => item === parseInt(this.state.id))) {
+      return true;
+    } else {
+      return false;
+    }
+  }
