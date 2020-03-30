@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import './Login.scss';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
   constructor() {
@@ -49,6 +50,12 @@ class Login extends React.Component {
       </main>
     );
   }
+}
+
+Login.propTypes = {
+  name: PropTypes.string,
+  email: PropTypes.string,
+  accountType: PropTypes.string
 }
 
 export default withRouter(Login);

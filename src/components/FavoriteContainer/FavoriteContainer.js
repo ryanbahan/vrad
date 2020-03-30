@@ -3,6 +3,7 @@ import Nav from "../Nav/Nav";
 import './FavoriteContainer.scss';
 import ListingCard from '../ListingCard/ListingCard';
 import { fetchFavoriteListingData } from '../../utils';
+import PropTypes from 'prop-types';
 
 class FavoriteContainer extends React.Component {
   constructor() {
@@ -87,6 +88,11 @@ class FavoriteContainer extends React.Component {
       </section>
     </main>
   }
+}
+
+FavoriteContainer.propTypes = {
+  listings: PropTypes.array,
+  favorites: PropTypes.array
 }
 
 export default FavoriteContainer;

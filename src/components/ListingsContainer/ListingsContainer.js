@@ -3,19 +3,20 @@ import ListingCard from '../ListingCard/ListingCard';
 import Nav from '../Nav/Nav';
 import './ListingsContainer.scss';
 import { fetchListingData } from '../../utils';
+import PropTypes from 'prop-types';
 
 class ListingsContainer extends React.Component {
   constructor({ match, location }) {
     super();
     this.state = {
       listings: [],
-      favorites: []
+      favorites: [],
+      areaID: match.params.id
     }
-    this.areaID = match.params.id
   }
 
   componentDidMount() {
-    fetchListingData(this.areaID).then(listings => this.setState({listings}));
+    fetchListingData(this.state.areaID).then(listings => this.setState({listings}));
     this.fetchSavedFavorites();
   }
 
@@ -53,7 +54,7 @@ class ListingsContainer extends React.Component {
   }
 
   listingCardDisplay = () => {
-    const areaID = this.props.match.params.id;
+    const areaID = this.state.areaID;
 
     return this.state.listings.map(listing => {
       return <ListingCard
@@ -76,6 +77,12 @@ class ListingsContainer extends React.Component {
       </section>
     </main>
   }
+}
+
+ListingsContainer.propTypes = {
+  listings: PropTypes.array,
+  favorites: PropTypes.array,
+  areaID: PropTypes.string
 }
 
 export default ListingsContainer;

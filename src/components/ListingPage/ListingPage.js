@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from '../Nav/Nav';
 import './ListingPage.scss';
 import { fetchListingPageData } from '../../utils';
+import PropTypes from 'prop-types';
 
 class ListingPage extends React.Component {
   constructor({ match }) {
@@ -107,6 +108,12 @@ class ListingPage extends React.Component {
       </section>
     </main>
   }
+}
+
+ListingPage.propTypes = {
+  listing: PropTypes.object,
+  id: PropTypes.string,
+  isFavorite: PropTypes.bool
 }
 
 export default ListingPage;
