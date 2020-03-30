@@ -13,7 +13,7 @@ describe("ListingsContainer - RiNo View", () => {
     utils = render(
       <Router>
         <ListingsContainer
-        user={"Ryan B"}
+        userName={"Ryan B"}
         match={
           {params: {id: 590}}
         }
@@ -23,13 +23,6 @@ describe("ListingsContainer - RiNo View", () => {
 
   afterEach(() => {
     utils = null;
-  })
-
-  it("should display the user's name with a greeting", () => {
-    const { getByText } = utils;
-    const name = getByText('Welcome, Ryan B');
-
-    expect(name).toBeInTheDocument();
   })
 
   it("Should display the page label", () => {
@@ -64,19 +57,12 @@ describe("ListingsContainer - Park Hill View", () => {
     utils = render(
       <Router>
         <ListingsContainer
-        user={"Tim N"}
+        userName={"Tim N"}
         match={
           {params: {id: 751}}
         }
         />
       </Router>)
-  })
-
-  it("Should display the user's name with a greeting", () => {
-    const { getByText } = utils;
-    const name = getByText('Welcome, Tim N');
-
-    expect(name).toBeInTheDocument();
   })
 
   it("Should display the page label", () => {
@@ -105,19 +91,12 @@ describe("ListingsContainer - LoHi View", () => {
     utils = render(
       <Router>
         <ListingsContainer
-        user={"Khalid W"}
+        userName={"Khalid W"}
         match={
           {params: {id: 408}}
         }
         />
       </Router>)
-  })
-
-  it("Should display the user's name with a greeting", () => {
-    const { getByText } = utils;
-    const name = getByText('Welcome, Khalid W');
-
-    expect(name).toBeInTheDocument();
   })
 
   it("Should display the page label", () => {
@@ -154,19 +133,12 @@ describe("ListingsContainer - Cap Hill View", () => {
     utils = render(
       <Router>
         <ListingsContainer
-        user={"Robbie J"}
+        userName={"Robbie J"}
         match={
           {params: {id: 240}}
         }
         />
       </Router>)
-  })
-
-  it("Should display the user's name with a greeting", () => {
-    const { getByText } = utils;
-    const name = getByText('Welcome, Robbie J');
-
-    expect(name).toBeInTheDocument();
   })
 
   it("Should display the page label", () => {
