@@ -93,7 +93,7 @@ class FavoriteContainer extends React.Component {
 
   render() {
     return<main>
-    <Nav user={this.props.user} accountType={this.props.userAccountType}/>
+    <Nav userInfo={this.props.userInfo}/>
     <h1>Favorite Listings</h1>
       <section className="favorites-container">
         {this.checkForFavoriteListings()}

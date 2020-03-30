@@ -38,36 +38,22 @@ class App extends React.Component {
             <Route
               exact
               path="/areas"
-              render={() => <AreasContainer
-                user={this.state.userName}
-                userAccountType={this.state.accountType}
-                />}
+              render={() => <AreasContainer userInfo={this.state}/>}
             />
             <Route
               exact
               path="/areas/:id"
-              render={(props) => <ListingsContainer
-                user={this.state.userName}
-                userAccountType={this.state.accountType}
-                {...props}
-                />}
+              render={(props) => <ListingsContainer userInfo={this.state} {...props}/>}
             />
             <Route
               exact
               path="/areas/:id/listings/:id"
-              render={(props) => <ListingPage
-                user={this.state.userName}
-                userAccountType={this.state.accountType}
-                {...props}
-                />}
+              render={(props) => <ListingPage userInfo={this.state} {...props}/>}
             />
             <Route
               exact
               path='/favorites'
-              render={() => <FavoriteContainer
-                user={this.state.userName}
-                userAccountType={this.state.accountType}
-                />}
+              render={() => <FavoriteContainer userInfo={this.state}/>}
               />
           </Switch>
         </div>

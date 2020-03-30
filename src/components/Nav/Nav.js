@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './Nav.scss';
 
-function Nav({ user, accountType }) {
+function Nav({ userInfo }) {
 
   return <nav>
     <section>
@@ -14,21 +14,13 @@ function Nav({ user, accountType }) {
     </Link>
     </section>
     <section>
-      <p>Welcome, {user || "friend!"}</p>
-      <p>{accountTypeMessage(accountType) || "This is VRad!"}</p>
+      <p>Welcome, {userInfo.userName || "friend!"}</p>
+      <p>Your Account Type: {userInfo.accountType || "Other"}</p>
     </section>
     <Link to="/">
       <button>Sign Out</button>
     </Link>
   </nav>
-}
-
-function accountTypeMessage(accountType) {
-  const typeMessage = {vacation: "This is Vacation View",
-    business: "This is Business View",
-    other: "This is Other View"};
-
-  return typeMessage[accountType]
 }
 
 export default Nav;
