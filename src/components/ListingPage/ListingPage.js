@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
 import './ListingPage.scss';
-
+import { fetchListingPageData } from '../../utils';
 
 class ListingPage extends React.Component {
   constructor({ match }) {
@@ -21,7 +21,7 @@ class ListingPage extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchListingPageData();
+    fetchListingPageData(this.state.id).then(listingData => this.setState({listing: listingData}));
     this.checkFavorites();
   }
 
@@ -56,12 +56,6 @@ class ListingPage extends React.Component {
     } else {
       return 'inactive';
     }
-  }
-
-  fetchListingPageData = () => {
-    fetch("http://localhost:3001/api/v1/listings/" + this.state.id)
-    .then(res => res.json())
-    .then(listingData => this.setState({listing: listingData}))
   }
 
   getFeatures = () => {
