@@ -15,12 +15,20 @@ function Nav({ user, accountType }) {
     </section>
     <section>
       <p>Welcome, {user || "friend!"}</p>
-      <p>{accountType}</p>
+      <p>{accountTypeMessage(accountType) || "This is VRad!"}</p>
     </section>
     <Link to="/">
       <button>Sign Out</button>
     </Link>
   </nav>
+}
+
+function accountTypeMessage(accountType) {
+  const typeMessage = {vacation: "This is Vacation View",
+    business: "This is Business View",
+    other: "This is Other View"};
+
+  return typeMessage[accountType]
 }
 
 export default Nav;
