@@ -69,6 +69,14 @@ class ListingPage extends React.Component {
     this.setState({isFavorite: !this.state.isFavorite});
   }
 
+  checkSuperhost = (superhost) => {
+    if (superhost) {
+      return "Superhost"
+    } else {
+      return null;
+    }
+  }
+
   render() {
     const { name, area, address } = this.state.listing;
     const { baths, beds, cost_per_night, superhost } = this.state.listing.details;
@@ -87,6 +95,7 @@ class ListingPage extends React.Component {
           <img className="secondary-image-b" src={"/images/" + this.state.id + "_c.jpg"} alt={`Tertiary view of ${name}`} />
         </div>
         <p className="listing-area-shortname">{area}</p>
+        <p>{this.checkSuperhost(superhost)}</p>
         <p className="image-lower-bar">{"$" + cost_per_night + " per night / " + beds + " beds / " + baths + " baths"}</p>
         <h3 className="features-title">Features</h3>
         <ul className="features-list">
