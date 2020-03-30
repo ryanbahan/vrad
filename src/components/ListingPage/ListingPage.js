@@ -37,7 +37,7 @@ class ListingPage extends React.Component {
 
     if (this.state.isFavorite === true && !favorites.find(item => item === parseInt(this.state.id))) {
       updatedFavorites = [...favorites, parseInt(this.state.id)];
-    } else {
+    } else if (favorites !== null) {
       updatedFavorites = favorites.filter(item => parseInt(item) !== parseInt(this.state.id))
     }
     window.localStorage.setItem("listingFavorites", JSON.stringify(updatedFavorites))
