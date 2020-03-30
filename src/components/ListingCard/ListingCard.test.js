@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement, fireEvent } from '@testing-library/react';
+import { render, waitForElement, fireEvent, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom/';
 import { BrowserRouter as Router, Link } from "react-router-dom";
@@ -8,8 +8,10 @@ import Nav from '../Nav/Nav';
 
 describe("ListingCard", () => {
   let utils;
+  const mockToggleFavorite = jest.fn().mockImplementation((e) => console.log(e));
 
   beforeEach(() => {
+
     utils = render(
       <Router>
         <ListingCard
@@ -17,16 +19,17 @@ describe("ListingCard", () => {
           id={3921}
           isFavorite="inactive"
           name="Spacious New Build in Park Hill"
+          toggleFavorite={mockToggleFavorite}
         />
       </Router>)
   })
 
   afterEach(() => {
-    utils = null;
+    cleanup
   })
 
   it("Should be able to display listing card information", () => {
-    const { debug, getByText, getByTestId } = utils;
+    const { getByText, getByTestId } = utils;
     const title = getByText("Spacious New Build in Park Hill");
     const viewListingButton = getByText("View Listing");
     const favoriteButton = getByTestId("listing-card-favorite-button");
@@ -34,5 +37,16 @@ describe("ListingCard", () => {
     expect(title).toBeInTheDocument();
     expect(viewListingButton).toBeInTheDocument();
     expect(favoriteButton).toBeInTheDocument();
+  })
+
+  it("Should be able to toggle favorites", () => {
+    const { getByTestId, debug } = utils;
+    const favoriteButton = getByTestId("listing-card-favorite-button");
+
+    expect(favoriteButton.className).toBe("favorite-button-inactive");
+
+    fireEvent.click(favoriteButton);
+
+    expect(mockToggleFavorite).toHaveBeenCalledTimes(1);
   })
 })

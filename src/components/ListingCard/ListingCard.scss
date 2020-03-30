@@ -17,7 +17,8 @@
   width: 20rem;
 }
 
-.favorite-button-toggle {
+.favorite-button-active,
+.favorite-button-inactive {
   cursor: pointer;
   width: 2.5rem;
   background-color: transparent;
