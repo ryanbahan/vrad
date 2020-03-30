@@ -87,10 +87,10 @@ class ListingPage extends React.Component {
           <h2 className="listing-title">{name}</h2>
           <p className="address">{address.street}</p>
         </div>
-        <img className="main-image" src={"/images/" + this.state.id + "_a.jpg"} />
+        <img className="main-image" src={"/images/" + this.state.id + "_a.jpg"} alt={`Primary view of ${name}`} />
         <div className="secondary-images">
-          <img className="secondary-image-a" src={"/images/" + this.state.id + "_b.jpg"} />
-          <img className="secondary-image-b" src={"/images/" + this.state.id + "_c.jpg"} />
+          <img className="secondary-image-a" src={"/images/" + this.state.id + "_b.jpg"} alt={`Secondary view of ${name}`} />
+          <img className="secondary-image-b" src={"/images/" + this.state.id + "_c.jpg"} alt={`Tertiary view of ${name}`} />
         </div>
         <p className="listing-area-shortname">{area}</p>
         <p className="image-lower-bar">{"$" + cost_per_night + " per night / " + beds + " beds / " + baths + " baths"}</p>
@@ -99,7 +99,7 @@ class ListingPage extends React.Component {
           {this.getFeatures()}
         </ul>
         <button className="favorite-button-toggle" id={this.state.id} onClick={() => this.toggleFavorite()}>
-          <img className="favorite-icon" src= {`/images/star-${this.displayFavoriteIcon()}.svg`} />
+          <img className="favorite-icon" src= {`/images/star-${this.displayFavoriteIcon()}.svg`} alt="Favorite Listing"/>
         </button>
       </section>
     </main>

@@ -1,5 +1,4 @@
 import React from 'react';
-import ListingsContainer from '../ListingsContainer/ListingsContainer';
 import { Link } from "react-router-dom";
 import './AreaCard.scss';
 
