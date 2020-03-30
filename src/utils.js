@@ -1,3 +1,5 @@
+// API FETCH CALLS
+
 export function fetchAreaData() {
   return fetch('http://localhost:3001/api/v1/areas')
    .then(res => res.json())
@@ -33,4 +35,18 @@ export function fetchListingData(areaID) {
 export function fetchListingPageData(id) {
     return fetch("http://localhost:3001/api/v1/listings/" + id)
     .then(res => res.json())
+  }
+
+export function fetchFavoriteListingData() {
+    const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
+    const promises = favorites.map(listingID => {
+      return fetch('http://localhost:3001/api/v1/listings/' + listingID)
+      .then(res => res.json())
+      .then(data => {
+        return {listingID: listingID,
+          areaID: data.area_id,
+          name: data.name}
+      })
+    })
+    return Promise.all(promises);
   }
