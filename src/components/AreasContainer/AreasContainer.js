@@ -44,7 +44,7 @@ class AreasContainer extends React.Component {
 
   render() {
     return <main>
-    <Nav user={this.props.user} />
+    <Nav user={this.props.user} accountType={this.props.userAccountType}/>
     <h1>Choose Your Destination</h1>
       <section className="areas-container">
         {this.areaCardDisplay()}

@@ -80,7 +80,7 @@ class ListingPage extends React.Component {
     const { baths, beds, cost_per_night, superhost } = this.state.listing.details;
 
     return <main>
-      <Nav user={this.props.user} />
+      <Nav user={this.props.user} accountType={this.props.userAccountType}/>
       <h1>Listing Details</h1>
       <section className="listing-page">
         <div className="top-container">
