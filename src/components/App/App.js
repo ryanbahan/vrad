@@ -9,7 +9,6 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { fetchSavedFavorites } from '../../utils';
 import './App.scss';
 
 class App extends React.Component {
@@ -22,10 +21,6 @@ class App extends React.Component {
         accountType: null
       }
     }
-  }
-
-  componentDidMount() {
-    fetchSavedFavorites();
   }
 
   handleSubmit = (userInfo) => {

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import './Nav.scss';
 
 function Nav(props) {
-  console.log(props);
-
   return <nav>
     <section>
     <Link to="/areas">

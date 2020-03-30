@@ -8,7 +8,7 @@ describe("Nav", () => {
   it("should display the Business welcome message", () => {
     const { getByText } = render(<Router>
         <Nav
-          userInfo={{userName: "Bob", accountType: "business"}}
+          userInfo={{name: "Bob", accountType: "business"}}
         />
         </Router>);
 
@@ -22,7 +22,7 @@ describe("Nav", () => {
   it("should display the Vacation welcome message", () => {
     const { getByText } = render(<Router>
         <Nav
-          userInfo={{userName: "Jane", accountType: "vacation"}}
+          userInfo={{name: "Jane", accountType: "vacation"}}
         />
       </Router>);
 
@@ -36,7 +36,7 @@ describe("Nav", () => {
   it("should display the Other welcome message", () => {
     const { getByText } = render(<Router>
         <Nav
-        userInfo={{userName: "Tom", accountType: "other"}}
+        userInfo={{name: "Tom", accountType: "other"}}
         />
       </Router>);
 
