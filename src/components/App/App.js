@@ -41,7 +41,7 @@ class App extends React.Component {
             <Route
               exact
               path="/areas"
-              render={() => <AreasContainer userInfo={this.state.userInfo} />}
+              render={(props) => <AreasContainer userInfo={this.state.userInfo} {...props} />}
             />
             <Route
               exact
@@ -56,7 +56,7 @@ class App extends React.Component {
             <Route
               exact
               path='/favorites'
-              render={() => <FavoriteContainer userInfo={this.state.userInfo} />}
+              render={(props) => <FavoriteContainer userInfo={this.state.userInfo} {...props} />}
               />
             <Route render={() => <BadPath />} />
           </Switch>

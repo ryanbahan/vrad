@@ -39,6 +39,7 @@ export function fetchListingPageData(id) {
 
 export function fetchFavoriteListingData() {
     const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
+    if (favorites) {
     const promises = favorites.map(listingID => {
       return fetch('http://localhost:3001/api/v1/listings/' + listingID)
       .then(res => res.json())
@@ -49,6 +50,9 @@ export function fetchFavoriteListingData() {
       })
     })
     return Promise.all(promises);
+    } else {
+      return Promise.resolve([])
+    }
   }
 
 export function fetchSavedFavorites() {

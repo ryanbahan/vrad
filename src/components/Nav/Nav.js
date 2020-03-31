@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './Nav.scss';
+import { fetchSavedFavorites } from "../../utils";
 
 function Nav(props) {
   return <nav>
@@ -9,7 +10,7 @@ function Nav(props) {
       <h1>VRad!</h1>
     </Link>
     <Link to="/favorites">
-      View Favorite Listings: ??
+      Favorites {fetchSavedFavorites().length}
     </Link>
     </section>
     <section>

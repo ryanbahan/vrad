@@ -2,49 +2,28 @@ import React from 'react';
 import Nav from "../Nav/Nav";
 import './FavoriteContainer.scss';
 import ListingCard from '../ListingCard/ListingCard';
-import { fetchFavoriteListingData, fetchSavedFavorites, updateSavedFavorites } from '../../utils';
+import { fetchFavoriteListingData, updateSavedFavorites } from '../../utils';
 import PropTypes from 'prop-types';
 
 class FavoriteContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      listings: [],
-      favorites: []
+      listings: []
     }
   }
 
   componentDidMount() {
-    const favorites = fetchSavedFavorites();
-    this.setState({favorites: favorites});
-    fetchFavoriteListingData().then(listings => this.setState({listings}));
+    fetchFavoriteListingData().then(listings => this.setState({listings: listings}));
   }
 
   componentDidUpdate() {
-    updateSavedFavorites();
-  }
-
-  toggleFavorite = (id) => {
-    if (this.state.favorites.find(item => item === id)) {
-      this.updateFavoriteCards(id);
-    } else {
-      this.setState({favorites: [...this.state.favorites, id]})
-    }
+    updateSavedFavorites(this.state.listings.map(listing => listing.listingID));
   }
 
   updateFavoriteCards = (updateID) => {
-    const updatedItems = this.state.favorites.filter(item => item !== updateID);
-    this.setState({favorites: updatedItems})
     const updatedListings = this.state.listings.filter(listing => listing.listingID !== updateID);
     this.setState({listings: updatedListings})
-  }
-
-  checkFavorite = (id) => {
-    if (this.state.favorites.find(item => item === id)) {
-      return "active";
-    } else {
-      return "inactive";
-    }
   }
 
   favoriteCardDisplay = () => {
@@ -54,14 +33,14 @@ class FavoriteContainer extends React.Component {
       id={listing.listingID}
       key={listing.listingID}
       name={listing.name}
-      toggleFavorite={this.toggleFavorite}
-      isFavorite={this.checkFavorite(listing.listingID)}
+      toggleFavorite={this.updateFavoriteCards}
+      isFavorite={"active"}
       />
     })
   }
 
   checkForFavoriteListings = () => {
-    if(this.state.favorites.length === 0) {
+    if(this.state.listings.length === 0) {
       return <section>There are no Favorite Listings</section>
     } else {
       return this.favoriteCardDisplay();
@@ -70,7 +49,7 @@ class FavoriteContainer extends React.Component {
 
   render() {
     return<main>
-    <Nav userInfo={this.props.userInfo}/>
+    <Nav userInfo={this.props.userInfo} />
     <h1>Favorite Listings</h1>
       <section className="favorites-container">
         {this.checkForFavoriteListings()}
