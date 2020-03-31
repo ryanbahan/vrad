@@ -45,7 +45,7 @@ class Login extends React.Component {
           <option value="business">Business</option>
           <option value="other">Other</option>
         </select>
-          <button type="submit">Sign-Up</button>
+          <button type="submit" placeholder="submit">Sign-Up</button>
         </form>
       </main>
     );

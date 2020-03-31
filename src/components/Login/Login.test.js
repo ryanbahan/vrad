@@ -41,6 +41,20 @@ describe("Login", () => {
     expect(getByPlaceholderText('input-name').value).toBe('Tom')
     expect(getByPlaceholderText('input-email').value).toBe('email@email.com')
     expect(getByPlaceholderText('account-type').value).toBe('business')
+
+    fireEvent.click(getByPlaceholderText("submit"))
+  })
+
+  it("should change to the correct location path", ()=> {
+    const { getByPlaceholderText } = utils;
+
+    fireEvent.change(getByPlaceholderText('input-name'), {target: {value: "Tom"}});
+    fireEvent.change(getByPlaceholderText('input-email'), {target: {value: "email@email.com"}});
+    fireEvent.change(getByPlaceholderText('account-type'), {target: {value: "business"}});
+
+    fireEvent.click(getByPlaceholderText("submit"))
+
+    expect(location.pathname).toBe("/areas")
   })
 
 })
