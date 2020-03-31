@@ -60,7 +60,7 @@ class ListingsContainer extends React.Component {
   render() {
     return <main>
     <Nav userInfo={this.props.userInfo} />
-    <h1>Choose Your Listing</h1>
+    <h1 className="page-label">Choose Your Listing</h1>
       <section className="listings-container">
         {this.listingCardDisplay()}
       </section>
