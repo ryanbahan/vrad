@@ -103,9 +103,7 @@ class ListingPage extends React.Component {
 }
 
 ListingPage.propTypes = {
-  listing: PropTypes.object,
-  id: PropTypes.string,
-  isFavorite: PropTypes.bool
+  userInfo: PropTypes.object
 }
 
 export default ListingPage;

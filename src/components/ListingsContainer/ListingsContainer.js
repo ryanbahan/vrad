@@ -69,9 +69,7 @@ class ListingsContainer extends React.Component {
 }
 
 ListingsContainer.propTypes = {
-  listings: PropTypes.array,
-  favorites: PropTypes.array,
-  areaID: PropTypes.string
+  userInfo: PropTypes.object
 }
 
 export default ListingsContainer;

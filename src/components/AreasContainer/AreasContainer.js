@@ -3,6 +3,7 @@ import AreaCard from '../AreaCard/AreaCard';
 import Nav from '../Nav/Nav';
 import './AreasContainer.scss';
 import { fetchAreaData } from '../../utils';
+import PropTypes from 'prop-types';
 
 class AreasContainer extends React.Component {
   constructor() {
@@ -37,6 +38,10 @@ class AreasContainer extends React.Component {
       </section>
     </main>
     }
-  }
+}
+
+AreasContainer.propTypes = {
+  userInfo: PropTypes.object
+}
 
 export default AreasContainer;

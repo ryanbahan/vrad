@@ -59,8 +59,7 @@ class FavoriteContainer extends React.Component {
 }
 
 FavoriteContainer.propTypes = {
-  listings: PropTypes.array,
-  favorites: PropTypes.array
+  userInfo: PropTypes.object
 }
 
 export default FavoriteContainer;
