@@ -4,7 +4,7 @@
 Users of the application is able to view and save rental listing in areas of Denver.  Users can views areas, see rental listings in those areas, and view details of specific listings. If there are listing that a user likes, they can favorite the listing for future reference. 
 
 #### Developer
-[Ryan Bahan](https://github.com/ryanbahan) [Tim Nguyen](https://github.com/TimNguyen21)
+[Ryan Bahan](https://github.com/ryanbahan) & [Tim Nguyen](https://github.com/TimNguyen21)
 
 #### In Action
 
