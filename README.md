@@ -9,16 +9,13 @@ Users of the application is able to view and save rental listing in areas of Den
 ### In Action
 
 #### Login Page
-![Login Page]()
+![Login Page](https://media.giphy.com/media/Y1G8knN7xJ1YlkDRtq/giphy.gif)
 
-#### Areas Page
-![Areas Page]()
+#### The App
+![Areas Page](https://media.giphy.com/media/iDPIEtnms9xpcRklG5/giphy.gif)
 
-#### Listings Page
-![Listings Page]()
-
-#### Detail Page
-![Detail Page]()
+#### Favorite Listings Feature
+![Detail Page](https://media.giphy.com/media/gLWm8d9hUea7V8kpJ2/giphy.gif)
 
 ### Project Next Steps
 Next steps for this project is making available for both computer and mobile.  As of this moment, the styling is created for the computer use.  We would like to add a mobile version of the application.
