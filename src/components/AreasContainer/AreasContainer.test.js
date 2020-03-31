@@ -21,7 +21,7 @@ describe("AreasContainer - Area Card Display", () => {
 
   it("Should display the page label", () => {
     const { getByText } = utils;
-    const label = getByText("Choose Your Destination");
+    const label = getByText("Where to, friend?");
 
     expect(label).toBeInTheDocument();
   })

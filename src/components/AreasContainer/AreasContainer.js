@@ -32,7 +32,7 @@ class AreasContainer extends React.Component {
   render() {
     return <main>
     <Nav userInfo={this.props.userInfo} />
-    <h1>Choose Your Destination</h1>
+    <h1 className="page-label">Where to, {this.props.userInfo.name || "friend"}?</h1>
       <section className="areas-container">
         {this.areaCardDisplay()}
       </section>
