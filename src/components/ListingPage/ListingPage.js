@@ -76,36 +76,38 @@ class ListingPage extends React.Component {
 
     return <main>
       <Nav userInfo={this.props.userInfo}/>
-      <h1>Listing Details</h1>
       <section className="listing-page">
         <div className="top-container">
           <h2 className="listing-title">{name}</h2>
-          <p className="address">{address.street}</p>
+          <div className="top-inner-wrapper">
+            <p className="address">{address.street}</p>
+            <button className="favorite-button-toggle" id={this.state.id} onClick={() => this.toggleFavorite()}>
+              <img className="favorite-icon" src= {`/images/star-${this.displayFavoriteIcon()}.svg`} alt="Favorite Listing"/>
+            </button>
+          </div>
         </div>
-        <img className="main-image" src={"/images/" + this.state.id + "_a.jpg"} alt={`Primary view of ${name}`} />
-        <div className="secondary-images">
-          <img className="secondary-image-a" src={"/images/" + this.state.id + "_b.jpg"} alt={`Secondary view of ${name}`} />
-          <img className="secondary-image-b" src={"/images/" + this.state.id + "_c.jpg"} alt={`Tertiary view of ${name}`} />
+        <div className="images-wrapper">
+          <img className="main-image" src={"/images/" + this.state.id + "_a.jpg"} alt={`Primary view of ${name}`} />
+          <div className="secondary-images">
+            <img className="secondary-image-a" src={"/images/" + this.state.id + "_b.jpg"} alt={`Secondary view of ${name}`} />
+            <img className="secondary-image-b" src={"/images/" + this.state.id + "_c.jpg"} alt={`Tertiary view of ${name}`} />
+          </div>
         </div>
-        <p className="listing-area-shortname">{area}</p>
-        <p>{this.checkSuperhost(superhost)}</p>
-        <p className="image-lower-bar">{"$" + cost_per_night + " per night / " + beds + " beds / " + baths + " baths"}</p>
+        <div className="bottom-flex">
+          <p className="image-lower-bar">{"$" + cost_per_night + " per night / " + beds + " beds / " + baths + " baths"}</p>
+          <p className="superhost">{this.checkSuperhost(superhost)}</p>
+        </div>
         <h3 className="features-title">Features</h3>
         <ul className="features-list">
           {this.getFeatures()}
         </ul>
-        <button className="favorite-button-toggle" id={this.state.id} onClick={() => this.toggleFavorite()}>
-          <img className="favorite-icon" src= {`/images/star-${this.displayFavoriteIcon()}.svg`} alt="Favorite Listing"/>
-        </button>
       </section>
     </main>
   }
 }
 
 ListingPage.propTypes = {
-  listing: PropTypes.object,
-  id: PropTypes.string,
-  isFavorite: PropTypes.bool
+  userInfo: PropTypes.object
 }
 
 export default ListingPage;

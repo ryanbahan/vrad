@@ -2,8 +2,10 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
-  height: auto;
+  border: solid 0.5px rgba(0,0,0,0.25);
+  border-radius: 2.5px;
+  box-shadow: 0.5px 0px 0.5px rgba(0,0,0, 0.15);
+  height: 15em;
   width: 40em;
   margin: 1em;
   section:first-child {
@@ -12,9 +14,13 @@
     justify-content: space-between;
     padding: 0em 0em 1em 1em;
   }
+  button {
+    cursor: pointer;
+  }
 }
 .listing-img {
   width: 20rem;
+  height: 100%;
 }
 
 .favorite-button-active,

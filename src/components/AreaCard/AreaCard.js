@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './AreaCard.scss';
+import PropTypes from 'prop-types';
 
 function AreaCard({ id, name, shortname, about }) {
   return <article className="area-card">
@@ -13,6 +14,13 @@ function AreaCard({ id, name, shortname, about }) {
         <button>View Listings</button>
       </Link>
     </article>
+}
+
+AreaCard.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  shortname: PropTypes.string,
+  about: PropTypes.string
 }
 
 export default AreaCard;

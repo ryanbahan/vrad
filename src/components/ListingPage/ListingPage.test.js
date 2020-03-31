@@ -43,13 +43,6 @@ describe("ListingPage", () => {
       expect(address).toBeInTheDocument();
   })
 
-  it("should display the location shortname", async () => {
-      const { getByText } = utils;
-      const locationShortname = await waitForElement(() => getByText('rino'));
-
-      expect(locationShortname).toBeInTheDocument();
-  })
-
   it("should display the location details", async () => {
       const { getByText } = utils;
       const locationDetails = await waitForElement(() => getByText('$420 per night / 3 beds / 2.5 baths'));

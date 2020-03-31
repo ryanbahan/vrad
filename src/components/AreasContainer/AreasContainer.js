@@ -3,6 +3,7 @@ import AreaCard from '../AreaCard/AreaCard';
 import Nav from '../Nav/Nav';
 import './AreasContainer.scss';
 import { fetchAreaData } from '../../utils';
+import PropTypes from 'prop-types';
 
 class AreasContainer extends React.Component {
   constructor() {
@@ -31,12 +32,16 @@ class AreasContainer extends React.Component {
   render() {
     return <main>
     <Nav userInfo={this.props.userInfo} />
-    <h1>Choose Your Destination</h1>
+    <h1 className="page-label">Where to, {this.props.userInfo.name || "friend"}?</h1>
       <section className="areas-container">
         {this.areaCardDisplay()}
       </section>
     </main>
     }
-  }
+}
+
+AreasContainer.propTypes = {
+  userInfo: PropTypes.object
+}
 
 export default AreasContainer;

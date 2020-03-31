@@ -1,26 +1,32 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './Nav.scss';
 import { fetchSavedFavorites } from "../../utils";
+import PropTypes from 'prop-types';
 
 function Nav(props) {
   return <nav>
     <section>
-    <Link to="/areas">
       <h1>VRad!</h1>
-    </Link>
-    <Link to="/favorites">
+    <NavLink to="/areas">
+      Areas
+    </NavLink>
+    <NavLink to="/favorites">
       Favorites {fetchSavedFavorites().length}
-    </Link>
+    </NavLink>
     </section>
     <section>
-      <p>Welcome, {props.userInfo.name || "friend!"}</p>
-      <p>Your Account Type: {props.userInfo.accountType || "Other"}</p>
-    </section>
-    <Link to="/">
+    <p>Welcome, {props.userInfo.name || "friend!"}</p>
+    <p>Your Account Type: {props.userInfo.accountType || "Other"}</p>
+    <NavLink to="/">
       <button>Sign Out</button>
-    </Link>
+    </NavLink>
+    </section>
   </nav>
+}
+
+Nav.propTypes = {
+  userInfo: PropTypes.object
 }
 
 export default Nav;

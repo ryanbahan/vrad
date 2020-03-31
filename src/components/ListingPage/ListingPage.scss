@@ -1,7 +1,7 @@
 .listing-page {
   display: flex;
   flex-direction: column;
-  padding: 2.5% 15%;
+  padding: 2.5% 25%;
 }
 
 .top-container {
@@ -16,15 +16,32 @@
   margin: 2.5% 0;
 }
 
+.superhost {
+  font-weight: bold;
+}
+
+.main-image {
+  width: 100%;
+}
+
 .secondary-images img {
   width: 45%;
 }
 
 .favorite-button-toggle {
-  height: 3em;
-  width: 3em;
-  img {
-    height: 100%;
-    width: 100%;
-  }
+  cursor: pointer;
+  width: 2.5rem;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-left: 1em;
+}
+
+.top-inner-wrapper {
+  display: flex;
+}
+
+.bottom-flex {
+  display: flex;
+  justify-content: space-between;
 }

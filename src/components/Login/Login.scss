@@ -24,6 +24,10 @@
     border-radius: 2.5px;
     border: solid 0.5px rgba(0,0,0, 0.15);
     box-shadow: 0;
+    padding-left: 0.25em;
+  }
+  input::placeholder {
+    font-style: italic;
   }
   select {
     margin: 5px 0 25px 0;
@@ -33,5 +37,7 @@
     height: 25px;
     background-color: #fff;
     border-radius: 5px;
+    border-width: 2px;
+    border-color: rgba(66, 135, 245, 0.65)
   }
 }

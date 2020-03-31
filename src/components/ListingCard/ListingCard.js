@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './ListingCard.scss';
+import PropTypes from 'prop-types';
 
 function ListingCard({name, id, areaID, toggleFavorite, isFavorite}) {
   return <article className="listing-card">
@@ -19,6 +20,14 @@ function ListingCard({name, id, areaID, toggleFavorite, isFavorite}) {
       <img className="listing-img" src= {`/images/${id}_a.jpg`} alt={name}/>
     </section>
   </article>
+}
+
+ListingCard.propTypes = {
+  name: PropTypes.string,
+  id: PropTypes.number,
+  areaID: PropTypes.string,
+  toggleFavorite: PropTypes.func,
+  isFavorite: PropTypes.string
 }
 
 export default ListingCard;
