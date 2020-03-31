@@ -5,12 +5,23 @@ import '@testing-library/jest-dom/';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import ListingPage from './ListingPage';
 
-describe.skip("ListingPage", () => {
+describe("ListingPage", () => {
   let utils;
+  Object.defineProperty(window, "localStorage", {
+      value: {
+        getItem: jest.fn(() => null),
+        setItem: jest.fn(() => null)
+      },
+      writable: true
+    });
 
   beforeEach(() => {
     utils = render(<Router>
         <ListingPage
+          userInfo={{name: null,
+            email: null,
+            accountType: "vacation"
+          }}
           match={
             { params: {id: 3} }
           }

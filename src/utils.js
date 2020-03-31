@@ -68,7 +68,7 @@ export function updateSavedFavorites(savedFavorites) {
 
 export function checkFavorites(id) {
     const favorites = JSON.parse(window.localStorage.getItem("listingFavorites"));
-    if (favorites.find(item => parseInt(item) === parseInt(id))) {
+    if (favorites && favorites.find(item => parseInt(item) === parseInt(id))) {
       return true;
     } else {
       return false;
