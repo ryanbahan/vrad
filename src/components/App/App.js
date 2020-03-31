@@ -3,7 +3,8 @@ import Login from '../Login/Login';
 import AreasContainer from '../AreasContainer/AreasContainer';
 import ListingsContainer from '../ListingsContainer/ListingsContainer';
 import ListingPage from '../ListingPage/ListingPage';
-import FavoriteContainer from "../FavoriteContainer/FavoriteContainer"
+import FavoriteContainer from "../FavoriteContainer/FavoriteContainer";
+import BadPath from '../BadPath/BadPath';
 import {
   BrowserRouter as Router,
   Switch,
@@ -35,28 +36,29 @@ class App extends React.Component {
             <Route
               exact
               path='/'
-              render={() => <Login handleSubmit={this.handleSubmit}/>}
+              render={() => <Login handleSubmit={this.handleSubmit} />}
               />
             <Route
               exact
               path="/areas"
-              render={() => <AreasContainer userInfo={this.state.userInfo}/>}
+              render={(props) => <AreasContainer userInfo={this.state.userInfo} {...props} />}
             />
             <Route
               exact
               path="/areas/:id"
-              render={(props) => <ListingsContainer userInfo={this.state.userInfo} {...props}/>}
+              render={(props) => <ListingsContainer userInfo={this.state.userInfo} {...props} />}
             />
             <Route
               exact
               path="/areas/:id/listings/:id"
-              render={(props) => <ListingPage userInfo={this.state.userInfo} {...props}/>}
+              render={(props) => <ListingPage userInfo={this.state.userInfo} {...props} />}
             />
             <Route
               exact
               path='/favorites'
-              render={() => <FavoriteContainer userInfo={this.state.userInfo}/>}
+              render={(props) => <FavoriteContainer userInfo={this.state.userInfo} {...props} />}
               />
+            <Route render={() => <BadPath />} />
           </Switch>
         </div>
       </Router>
