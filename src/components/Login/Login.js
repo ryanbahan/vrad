@@ -36,9 +36,9 @@ class Login extends React.Component {
       <main className="login-container">
         <form className="login-form" onSubmit={this.handleSubmit}>
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" placeholder="input-name" onChange={this.updateName} required/>
+        <input type="text" id="name" placeholder="name..." onChange={this.updateName} required/>
         <label htmlFor="email">Email Address</label>
-        <input type="email" id="email" placeholder="input-email" onChange={this.updateEmail} required/>
+        <input type="email" id="email" placeholder="email..." onChange={this.updateEmail} required/>
         <label htmlFor="account-type">Account Type</label>
         <select name="account-type" id="account-type" placeholder="account-type" onChange={this.updateAccountType} required>
           <option value="vacation">Vacation</option>
@@ -53,9 +53,7 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  name: PropTypes.string,
-  email: PropTypes.string,
-  accountType: PropTypes.bool
+  handleSubmit: PropTypes.func
 }
 
 export default withRouter(Login);
