@@ -40,7 +40,7 @@ class Login extends React.Component {
         <label htmlFor="email">Email Address</label>
         <input type="email" id="email" placeholder="input-email" onChange={this.updateEmail} required/>
         <label htmlFor="account-type">Account Type</label>
-        <select name="account-type" id="account-type" placeholder="input-type" onChange={this.updateAccountType} required>
+        <select name="account-type" id="account-type" placeholder="account-type" onChange={this.updateAccountType} required>
         <option value="vacation">Vacation</option>
           <option value="business">Business</option>
           <option value="other">Other</option>
