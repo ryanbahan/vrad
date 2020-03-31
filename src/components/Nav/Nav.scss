@@ -4,5 +4,28 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 10vh;
-  border: solid 1px black;
+}
+
+nav h1 {
+  padding: 0;
+}
+
+nav section {
+  display: flex;
+  align-items: baseline;
+  width: 30%;
+}
+
+nav section > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5%;
+}
+
+nav button {
+  cursor: pointer;
+  min-width: 75px;
+  padding: 5%;
+  border-radius: 2.5px;
 }
